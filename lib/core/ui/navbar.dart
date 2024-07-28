@@ -33,7 +33,7 @@ class _NavBarWidgetState extends State<NavBar> {
                 padding: const EdgeInsets.all(10),
                 child: Column(children: [
                   Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                    Container(
+                    SizedBox(
                       width: 200,
                       child: InkWell(
                         onHover: (value) {

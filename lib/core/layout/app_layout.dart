@@ -18,7 +18,7 @@ class AppLayout extends StatelessWidget {
   final Widget? header;
   final Widget body;
   final EdgeInsets mobileBodyPadding;
-  AppLayout({
+  const AppLayout({
     Key? key,
     this.pageTitle,
     this.hasBack = false,
