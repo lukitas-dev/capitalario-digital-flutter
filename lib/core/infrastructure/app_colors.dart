@@ -18,4 +18,11 @@ class AppColors {
   static const Color red = Color(0xffF21D1D);
   static const Color white = Color(0xffD9D6C7);
   static const Color black = Color(0xff262626);
+
+  static Color fromHex(String hexString) {
+    final buffer = StringBuffer();
+    if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
+    buffer.write(hexString.replaceFirst('#', ''));
+    return Color(int.parse(buffer.toString(), radix: 16));
+  }
 }

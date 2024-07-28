@@ -1,3 +1,5 @@
+import 'package:app/core/constants/constants.dart';
+import 'package:app/features/home/constants/home_constants.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 class AppConfig {
@@ -15,10 +17,7 @@ class AppConfig {
 
   Map<String, dynamic> prepareDefaultValues() {
     var defaultValues = <String, dynamic>{};
-    defaultValues["example_param_1"] = 42;
-    defaultValues["example_param_2"] = 3.14159;
-    defaultValues["example_param_3"] = true;
-    defaultValues["example_param_4"] = "Hello, world!";
+    defaultValues[AppConstants.homeInfoKey] = HomeConstants.infoDefaults;
     return defaultValues;
   }
 
@@ -33,7 +32,7 @@ class AppConfig {
   int getInt(String key) {
     return FirebaseRemoteConfig.instance.getInt(key);
   }
-  
+
   String getString(String key) {
     return FirebaseRemoteConfig.instance.getString(key);
   }
