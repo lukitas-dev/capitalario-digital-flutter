@@ -1,14 +1,13 @@
-import 'package:app/core/config/app_config.dart';
-import 'package:app/core/infrastructure/firebase_options.dart';
+import 'package:app/core/core.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.platformOptions,
+    options: AppCore.firebase.options,
   );
-  await AppConfig.instance.setupAndFetch();
+  await AppCore.config.setupAndFetch();
   runApp(const MyApp());
 }
 
@@ -78,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var remoteText = AppConfig.instance.getString("example_param_4");
+    var remoteText = AppCore.config.getString("example_param_4");
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to

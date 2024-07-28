@@ -1,11 +1,6 @@
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 class AppConfig {
-  static AppConfig? _instance;
-  // Avoid self instance
-  AppConfig._();
-  static AppConfig get instance => _instance ??= AppConfig._();
-
   setupAndFetch() async {
     final remoteConfig = FirebaseRemoteConfig.instance;
     await remoteConfig.setConfigSettings(RemoteConfigSettings(

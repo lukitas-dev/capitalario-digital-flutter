@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 
 class DefaultFirebaseOptions {
-  static FirebaseOptions get platformOptions {
+  FirebaseOptions get options {
     if (kIsWeb) {
       // Web
       return const FirebaseOptions(
