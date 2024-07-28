@@ -1,3 +1,4 @@
+import 'package:app/core/layout/app_layout.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -5,11 +6,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home Page')),
-      body: const Center(
-        child: Text('This is initial page'),
-      ),
+    return AppLayout(body: _buildBody(context));
+  }
+
+  Widget _buildBody(BuildContext context) {
+    return const Center(
+      child: Text("Screen is under construction XD"),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:app/core/infrastructure/app_colors.dart';
+import 'package:app/core/infrastructure/app_routes.dart';
 import 'package:app/core/models/menu_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class SideMenu extends StatelessWidget {
   final Widget? header;
@@ -33,7 +35,7 @@ class SideMenu extends StatelessWidget {
         "Home",
         style: TextStyle(color: AppColors.browLight, fontSize: 20),
       ),
-      onTap: () => Navigator.of(context).pushNamed("/"),
+      onTap: () => Modular.to.navigate(AppRoutes.home.path),
     ));
     for (var item in menuItens) {
       list.add(ListTile(
@@ -41,7 +43,7 @@ class SideMenu extends StatelessWidget {
           item.title,
           style: TextStyle(color: item.textColor, fontSize: item.textSize),
         ),
-        onTap: () => Navigator.of(context).pushNamed(item.route),
+        onTap: () => Modular.to.navigate(item.routePath),
       ));
     }
     return list;

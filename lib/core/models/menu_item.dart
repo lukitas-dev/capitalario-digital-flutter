@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class MenuItem {
   final String title;
-  final String route;
+  final String routePath;
   bool isHovering;
   Color textColor;
   Color onHoverColor;
@@ -12,7 +12,7 @@ class MenuItem {
 
   MenuItem({
     required this.title,
-    required this.route,
+    required this.routePath,
     this.isHovering = false,
     this.textColor = AppColors.browLight,
     this.onHoverColor = AppColors.white,

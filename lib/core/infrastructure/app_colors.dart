@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color background = brow;
-  static const Color toolbarBackground = brow;
+  static const Color background = white;
+  static const Color toolbarBackground = black;
   static const Color primary = blueLight;
   static const Color primaryDark = blue;
-  static const Color accent = red;
+  static const Color accent = yellow;
 
   //Paleta
   static const Color blue = Color(0xff2F4673);

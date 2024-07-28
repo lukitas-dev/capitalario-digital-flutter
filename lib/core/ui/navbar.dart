@@ -1,7 +1,9 @@
 import 'package:app/core/infrastructure/app_colors.dart';
+import 'package:app/core/infrastructure/app_routes.dart';
 import 'package:app/core/infrastructure/app_settings.dart';
 import 'package:app/core/models/menu_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class NavBar extends StatefulWidget {
   final double opacity;
@@ -34,18 +36,18 @@ class _NavBarWidgetState extends State<NavBar> {
                 child: Column(children: [
                   Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
                     SizedBox(
-                      width: 200,
+                      width: 250,
                       child: InkWell(
                         onHover: (value) {
                           setState(() {
                             value ? isHovering = true : isHovering = false;
                           });
                         },
-                        onTap: () => Navigator.of(context).pushNamed("/"),
+                        onTap: () => Modular.to.navigate(AppRoutes.home.path),
                         child: Text(
                           AppSettings.name,
                           style: TextStyle(
-                              color: isHovering ? AppColors.white : AppColors.browLight, fontSize: 24),
+                              color: isHovering ? AppColors.accent : AppColors.black, fontSize: 20),
                         ),
                       ),
                     ),
@@ -74,7 +76,7 @@ class _NavBarWidgetState extends State<NavBar> {
             value ? item.isHovering = true : item.isHovering = false;
           });
         },
-        onTap: () => Navigator.of(context).pushNamed(item.route),
+        onTap: () => Modular.to.navigate(item.routePath),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

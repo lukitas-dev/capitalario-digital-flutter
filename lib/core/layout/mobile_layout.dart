@@ -14,7 +14,7 @@ class MobileLayout extends StatelessWidget {
     Key? key,
     required this.backgroundColor,
     required this.appBar,
-    this.appBarHeight = 65,
+    this.appBarHeight = 55,
     required this.drawer,
     required this.header,
     required this.body,
