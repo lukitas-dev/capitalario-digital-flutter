@@ -40,7 +40,14 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() async {
-    AppCore.database.getDocument("teste", "hhIhGCSnnUS3t2DeJjcv", (map) {
+    await AppCore.database.getDocument("teste", "hhIhGCSnnUS3t2DeJjcv", (map) {
+      _updateDocument(map);
+    });
+  }
+
+  void _updateDocument(Map<String, dynamic> data) {
+    AppCore.database.updateDocumentOnlyField("teste", "hhIhGCSnnUS3t2DeJjcv", "example_param_2", 2024,
+        (id) {
       setState(() {
         _counter++;
       });
