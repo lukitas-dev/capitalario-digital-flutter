@@ -1,4 +1,4 @@
-import 'package:app/core/models/app_screen.dart';
+import 'package:app/core/infrastructure/app_screen.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 class AppAnalytics {
