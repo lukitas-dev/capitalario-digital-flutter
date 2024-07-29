@@ -1,7 +1,7 @@
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_state.dart';
-import 'package:app/features/home/models/home_info.dart';
+import 'package:app/home/models/home_info.dart';
 import 'package:mobx/mobx.dart';
 part 'home_store.g.dart';
 

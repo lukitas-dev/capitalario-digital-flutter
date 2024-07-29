@@ -1,16 +1,7 @@
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_routes.dart';
-
-
-
-
-
-
-
-
-
 import 'package:app/core/infrastructure/app_settings.dart';
-import 'package:app/features/home/views/home_page.dart';
+import 'package:app/home/views/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

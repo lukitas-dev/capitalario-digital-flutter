@@ -1,6 +1,6 @@
 import 'package:app/core/models/button_info.dart';
 import 'package:app/core/models/button_style_info.dart';
-import 'package:app/features/home/models/home_info.dart';
+import 'package:app/home/models/home_info.dart';
 
 class HomeConstants {
   static String get infoDefaults => HomeInfo(
