@@ -1,5 +1,5 @@
 import 'package:app/core/constants/constants.dart';
-import 'package:app/features/home/constants/home_constants.dart';
+import 'package:app/home/constants/home_constants.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 class AppConfig {
