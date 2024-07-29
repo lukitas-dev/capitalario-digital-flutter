@@ -41,7 +41,7 @@ class HomeController {
   }
 
   Widget buildSubtitle() {
-    if (info.title.isNotEmpty) {
+    if (info.subtitle.isNotEmpty) {
       return Text(
         info.subtitle,
         textAlign: TextAlign.center,
