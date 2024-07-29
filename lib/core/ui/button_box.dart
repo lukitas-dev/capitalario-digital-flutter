@@ -7,11 +7,11 @@ class ButtonBox extends StatelessWidget {
   final String text;
 
   const ButtonBox(
-      {required this.onTap, required this.options, required this.text});
+      {super.key, required this.onTap, required this.options, required this.text});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: options.width,
       height: options.height,
       child: InkWell(

@@ -1,11 +1,10 @@
 import 'package:app/core/infrastructure/app_colors.dart';
 import 'package:app/core/infrastructure/app_state.dart';
-import 'package:app/core/models/button_info.dart';
 import 'package:app/core/models/widget_options.dart';
 import 'package:app/core/ui/button_box.dart';
 import 'package:app/core/ui/header.dart';
-import 'package:app/features/home/models/home_info.dart';
-import 'package:app/features/home/stores/home_store.dart';
+import 'package:app/home/models/home_info.dart';
+import 'package:app/home/stores/home_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -42,7 +41,7 @@ class HomeController {
   }
 
   Widget buildSubtitle() {
-    if (info.title.isNotEmpty) {
+    if (info.subtitle.isNotEmpty) {
       return Text(
         info.subtitle,
         textAlign: TextAlign.center,
