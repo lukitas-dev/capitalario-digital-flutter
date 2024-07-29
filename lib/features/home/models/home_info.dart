@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import 'package:app/core/models/button_info.dart';
+import 'package:app/core/models/button_style_info.dart';
 
 class HomeInfo {
   final String headerImagePath;
@@ -10,12 +11,14 @@ class HomeInfo {
   final String subtitle;
   final String textColor;
   final List<ButtonInfo> buttonList;
+  final ButtonStyleInfo buttonStyle;
   HomeInfo({
     required this.headerImagePath,
     required this.title,
     required this.subtitle,
     required this.textColor,
     required this.buttonList,
+    required this.buttonStyle,
   });
 
   HomeInfo copyWith({
@@ -24,6 +27,7 @@ class HomeInfo {
     String? subtitle,
     String? textColor,
     List<ButtonInfo>? buttonList,
+    ButtonStyleInfo? buttonStyle,
   }) {
     return HomeInfo(
       headerImagePath: headerImagePath ?? this.headerImagePath,
@@ -31,6 +35,7 @@ class HomeInfo {
       subtitle: subtitle ?? this.subtitle,
       textColor: textColor ?? this.textColor,
       buttonList: buttonList ?? this.buttonList,
+      buttonStyle: buttonStyle ?? this.buttonStyle,
     );
   }
 
@@ -42,6 +47,7 @@ class HomeInfo {
     result.addAll({'subtitle': subtitle});
     result.addAll({'textColor': textColor});
     result.addAll({'buttonList': buttonList.map((x) => x.toMap()).toList()});
+    result.addAll({'buttonStyle': buttonStyle.toMap()});
   
     return result;
   }
@@ -53,6 +59,7 @@ class HomeInfo {
       subtitle: map['subtitle'] ?? '',
       textColor: map['textColor'] ?? '',
       buttonList: List<ButtonInfo>.from(map['buttonList']?.map((x) => ButtonInfo.fromMap(x))),
+      buttonStyle: ButtonStyleInfo.fromMap(map['buttonStyle']),
     );
   }
 
@@ -63,7 +70,7 @@ class HomeInfo {
 
   @override
   String toString() {
-    return 'HomeInfo(headerImagePath: $headerImagePath, title: $title, subtitle: $subtitle, textColor: $textColor, buttonList: $buttonList)';
+    return 'HomeInfo(headerImagePath: $headerImagePath, title: $title, subtitle: $subtitle, textColor: $textColor, buttonList: $buttonList, buttonStyle: $buttonStyle)';
   }
 
   @override
@@ -75,7 +82,8 @@ class HomeInfo {
       other.title == title &&
       other.subtitle == subtitle &&
       other.textColor == textColor &&
-      listEquals(other.buttonList, buttonList);
+      listEquals(other.buttonList, buttonList) &&
+      other.buttonStyle == buttonStyle;
   }
 
   @override
@@ -84,6 +92,7 @@ class HomeInfo {
       title.hashCode ^
       subtitle.hashCode ^
       textColor.hashCode ^
-      buttonList.hashCode;
+      buttonList.hashCode ^
+      buttonStyle.hashCode;
   }
 }

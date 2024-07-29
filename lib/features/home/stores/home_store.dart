@@ -5,7 +5,7 @@ import 'package:app/features/home/models/home_info.dart';
 import 'package:mobx/mobx.dart';
 part 'home_store.g.dart';
 
-typedef onHomeSetupCallback = Function(HomeInfo info);
+typedef HomeSetupCallback = Function(HomeInfo info);
 
 class HomeStore = _HomeStoreBase with _$HomeStore;
 
@@ -13,7 +13,7 @@ abstract class _HomeStoreBase with Store {
   @observable
   AppState state = AppState.loading;
 
-  setup(onHomeSetupCallback callback) {
+  setup(HomeSetupCallback callback) {
     var json = AppCore.config.getString(AppConstants.homeInfoKey);
     var info = HomeInfo.fromJson(json);
     callback(info);
