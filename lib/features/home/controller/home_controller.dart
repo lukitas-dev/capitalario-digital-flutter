@@ -1,6 +1,5 @@
 import 'package:app/core/infrastructure/app_colors.dart';
 import 'package:app/core/infrastructure/app_state.dart';
-import 'package:app/core/models/button_info.dart';
 import 'package:app/core/models/widget_options.dart';
 import 'package:app/core/ui/button_box.dart';
 import 'package:app/core/ui/header.dart';
