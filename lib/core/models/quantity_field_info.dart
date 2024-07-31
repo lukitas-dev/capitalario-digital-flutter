@@ -7,13 +7,13 @@ import 'package:app/core/models/quantity_option.dart';
 class QuantityFieldInfo {
   final String label;
   final List<QuantityOption> optionList;
-  final String clearTitleButton;
+  final bool showDeleteButton;
   final int maxValue;
   final String hint;
   QuantityFieldInfo({
     required this.label,
     required this.optionList,
-    required this.clearTitleButton,
+    required this.showDeleteButton,
     required this.maxValue,
     required this.hint,
   });
@@ -21,14 +21,14 @@ class QuantityFieldInfo {
   QuantityFieldInfo copyWith({
     String? label,
     List<QuantityOption>? optionList,
-    String? clearTitleButton,
+    bool? showDeleteButton,
     int? maxValue,
     String? hint,
   }) {
     return QuantityFieldInfo(
       label: label ?? this.label,
       optionList: optionList ?? this.optionList,
-      clearTitleButton: clearTitleButton ?? this.clearTitleButton,
+      showDeleteButton: showDeleteButton ?? this.showDeleteButton,
       maxValue: maxValue ?? this.maxValue,
       hint: hint ?? this.hint,
     );
@@ -39,7 +39,7 @@ class QuantityFieldInfo {
   
     result.addAll({'label': label});
     result.addAll({'optionList': optionList.map((x) => x.toMap()).toList()});
-    result.addAll({'clearTitleButton': clearTitleButton});
+    result.addAll({'showDeleteButton': showDeleteButton});
     result.addAll({'maxValue': maxValue});
     result.addAll({'hint': hint});
   
@@ -50,7 +50,7 @@ class QuantityFieldInfo {
     return QuantityFieldInfo(
       label: map['label'] ?? '',
       optionList: List<QuantityOption>.from(map['optionList']?.map((x) => QuantityOption.fromMap(x))),
-      clearTitleButton: map['clearTitleButton'] ?? '',
+      showDeleteButton: map['showDeleteButton'] ?? false,
       maxValue: map['maxValue']?.toInt() ?? 0,
       hint: map['hint'] ?? '',
     );
@@ -63,7 +63,7 @@ class QuantityFieldInfo {
 
   @override
   String toString() {
-    return 'QuantityFieldInfo(label: $label, optionList: $optionList, clearTitleButton: $clearTitleButton, maxValue: $maxValue, hint: $hint)';
+    return 'QuantityFieldInfo(label: $label, optionList: $optionList, showDeleteButton: $showDeleteButton, maxValue: $maxValue, hint: $hint)';
   }
 
   @override
@@ -73,7 +73,7 @@ class QuantityFieldInfo {
     return other is QuantityFieldInfo &&
       other.label == label &&
       listEquals(other.optionList, optionList) &&
-      other.clearTitleButton == clearTitleButton &&
+      other.showDeleteButton == showDeleteButton &&
       other.maxValue == maxValue &&
       other.hint == hint;
   }
@@ -82,7 +82,7 @@ class QuantityFieldInfo {
   int get hashCode {
     return label.hashCode ^
       optionList.hashCode ^
-      clearTitleButton.hashCode ^
+      showDeleteButton.hashCode ^
       maxValue.hashCode ^
       hint.hashCode;
   }

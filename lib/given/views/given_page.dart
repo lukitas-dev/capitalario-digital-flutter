@@ -32,7 +32,10 @@ class _GivenPageState extends State<GivenPage> {
     widgetList.add(_controller.buildHeader());
     widgetList.add(AppDimens.spaceHeigh24);
     widgetList.add(_controller.buildDropdownField(context, _controller.info.fieldList.first));
-    widgetList.add(AppDimens.spaceHeigh8);
+    widgetList.add(AppDimens.spaceHeigh16);
+    widgetList.add(_controller.buildQuantitySelectorField(context));
+    widgetList.add(AppDimens.spaceHeigh16);
+    widgetList.add(_controller.buildSendButton(context));
 
     return Column(
         crossAxisAlignment: CrossAxisAlignment.center, children: widgetList);

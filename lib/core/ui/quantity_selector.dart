@@ -97,20 +97,23 @@ class QuantitySelector extends StatelessWidget {
         backgroundColor: AppColors.grey,
         child: Text(
           quantityOption.description,
-          style: Theme.of(context).textTheme.titleMedium,
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ));
       options.add(AppDimens.spaceWidth16);
     }
-    options.add(FloatingActionButton(
-        heroTag: "deleteBtn",
-        onPressed: () => onClearCallback(),
-        elevation: 4,
-        backgroundColor: AppColors.red,
-        child: const Icon(
-          Icons.delete,
-          color: AppColors.white,
-        )));
+    if (info.showDeleteButton) {
+      options.add(FloatingActionButton(
+          heroTag: "deleteBtn",
+          onPressed: () => onClearCallback(),
+          elevation: 4,
+          backgroundColor: AppColors.red,
+          child: const Icon(
+            Icons.delete,
+            color: AppColors.white,
+          )));
+    }
     options.add(AppDimens.spaceWidth16);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

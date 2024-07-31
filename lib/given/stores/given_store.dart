@@ -55,4 +55,12 @@ abstract class _GivenStoreBase with Store {
     offer = value;
   }
 
+  @computed
+  bool get enableSendButton => true;
+
+  
+  Future<void> sendCapital() async {
+    state = AppState.loading;
+   
+  }
 }

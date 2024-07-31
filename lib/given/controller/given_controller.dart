@@ -1,7 +1,10 @@
+import 'package:app/core/infrastructure/app_colors.dart';
 import 'package:app/core/infrastructure/app_dimens.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/core/models/field_info.dart';
 import 'package:app/core/models/quantity_field_info.dart';
+import 'package:app/core/models/widget_options.dart';
+import 'package:app/core/ui/button_box.dart';
 import 'package:app/core/ui/dropdown_box.dart';
 import 'package:app/core/ui/header.dart';
 import 'package:app/core/ui/quantity_selector.dart';
@@ -55,19 +58,19 @@ class GivenController {
     }
   }
 
-  Widget buildQuantitySelectorField(
-      BuildContext context, QuantityFieldInfo info) {
-    if (info.label.isNotEmpty) {
+  Widget buildQuantitySelectorField(BuildContext context) {
+    var quantityInfo = info.quantityField;
+    if (quantityInfo.label.isNotEmpty) {
       return Column(
         children: [
           Text(
-            info.label,
+            quantityInfo.label,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.titleMedium,
           ),
           AppDimens.spaceHeigh16,
           QuantitySelector(
-              info: info,
+              info: quantityInfo,
               onTimerSelectorCallback: (value) {
                 store.update(value);
               },
@@ -79,7 +82,7 @@ class GivenController {
       );
     } else {
       return QuantitySelector(
-          info: info,
+          info: quantityInfo,
           onTimerSelectorCallback: (value) {
             store.update(value);
           },
@@ -87,6 +90,27 @@ class GivenController {
             store.reset();
           },
           quantity: store.capitalQuantity);
+    }
+  }
+
+  Widget buildSendButton(BuildContext context) {
+    if (store.enableSendButton) {
+      return ButtonBox(
+        onTap: () async {
+          await store.sendCapital();
+        },
+        options: WidgetOptions(
+            borderColor: AppColors.grey,
+            backgroundColor: AppColors.blue,
+            textColor: AppColors.white,
+            width: 240,
+            height: 60,
+            borderRadius: 30,
+            textFontSize: 22),
+        text: info.sendTitleButton,
+      );
+    } else {
+      return Container();
     }
   }
 
