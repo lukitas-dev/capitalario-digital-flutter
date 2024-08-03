@@ -1,6 +1,6 @@
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_assets.dart';
-import 'package:app/core/infrastructure/app_dimens.dart';
+import 'package:app/core/infrastructure/app_dimensions.dart';
 import 'package:app/core/infrastructure/app_screen.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/core/layout/app_layout.dart';
@@ -17,6 +17,7 @@ class GivenPage extends StatefulWidget {
 
 class _GivenPageState extends State<GivenPage> {
   final _controller = GivenController();
+  final _dimens = AppCore.infra.dimens;
 
   @override
   void initState() {
@@ -56,12 +57,12 @@ class _GivenPageState extends State<GivenPage> {
   Widget _buildBody(BuildContext context) {
     List<Widget> widgetList = [];
     widgetList.add(_controller.buildHeader());
-    widgetList.add(AppDimens.spaceHeigh24);
+    widgetList.add(_dimens.spaceHeigh24);
     widgetList.add(_controller.buildDropdownField(
         context, _controller.info.fieldList.first));
-    widgetList.add(AppDimens.spaceHeigh16);
+    widgetList.add(_dimens.spaceHeigh16);
     widgetList.add(_controller.buildQuantitySelectorField(context));
-    widgetList.add(AppDimens.spaceHeigh16);
+    widgetList.add(_dimens.spaceHeigh16);
     widgetList.add(_controller.buildSendButton(context));
 
     return Column(

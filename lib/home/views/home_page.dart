@@ -1,5 +1,5 @@
 import 'package:app/core/core.dart';
-import 'package:app/core/infrastructure/app_dimens.dart';
+import 'package:app/core/infrastructure/app_dimensions.dart';
 import 'package:app/core/infrastructure/app_screen.dart';
 import 'package:app/core/layout/app_layout.dart';
 import 'package:app/home/controller/home_controller.dart';
@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _controller = HomeController();
+  final _dimens = AppCore.infra.dimens;
 
   @override
   void initState() {
@@ -30,9 +31,9 @@ class _HomePageState extends State<HomePage> {
   Widget _buildBody(BuildContext context) {
     List<Widget> widgetList = [];
     widgetList.add(_controller.buildHeader());
-    widgetList.add(AppDimens.spaceHeigh24);
+    widgetList.add(_dimens.spaceHeigh24);
     widgetList.add(_controller.buildTitle());
-    widgetList.add(AppDimens.spaceHeigh8);
+    widgetList.add(_dimens.spaceHeigh8);
     widgetList.add(_controller.buildSubtitle());
     widgetList.addAll(_controller.buildButtonList());
 

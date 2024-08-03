@@ -1,6 +1,5 @@
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_assets.dart';
-import 'package:app/core/infrastructure/app_dimens.dart';
 import 'package:app/core/infrastructure/app_routes.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/core/models/field_info.dart';
@@ -17,6 +16,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class GivenController {
   final _colors = AppCore.infra.colors;
+  final _dimens = AppCore.infra.dimens;
   GivenStore store = GivenStore();
   late GivenInfo info;
 
@@ -43,7 +43,7 @@ class GivenController {
             field.label,
             style: Theme.of(context).textTheme.titleMedium,
           ),
-          AppDimens.spaceHeigh8,
+          _dimens.spaceHeigh8,
           SizedBox(
               width: 260,
               child: DropdownBox(
@@ -72,7 +72,7 @@ class GivenController {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.titleMedium,
           ),
-          AppDimens.spaceHeigh16,
+          _dimens.spaceHeigh16,
           QuantitySelector(
               info: quantityInfo,
               onTimerSelectorCallback: (value) {

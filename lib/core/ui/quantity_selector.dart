@@ -1,6 +1,6 @@
+import 'package:app/core/core.dart';
 import 'package:flutter/material.dart';
 
-import 'package:app/core/infrastructure/app_dimens.dart';
 import 'package:app/core/models/quantity_field_info.dart';
 
 typedef QuantitySelectorCallback = void Function(int number);
@@ -14,7 +14,7 @@ class QuantitySelector extends StatelessWidget {
   final Color? iconsTintColor;
   final Color? textColor;
   final Color? inputColor;
-  const QuantitySelector({
+  QuantitySelector({
     Key? key,
     required this.info,
     required this.onTimerSelectorCallback,
@@ -26,6 +26,8 @@ class QuantitySelector extends StatelessWidget {
     this.inputColor,
   }) : super(key: key);
 
+  final _dimens = AppCore.infra.dimens;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,9 +35,9 @@ class QuantitySelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         _buildTextField(context),
-        AppDimens.spaceHeigh16,
+        _dimens.spaceHeigh16,
         _buildOptions(context),
-        AppDimens.spaceHeigh16,
+        _dimens.spaceHeigh16,
       ],
     );
   }
@@ -54,7 +56,7 @@ class QuantitySelector extends StatelessWidget {
             color: iconsTintColor ?? Colors.white,
           ),
         ),
-        AppDimens.spaceWidth16,
+        _dimens.spaceWidth16,
         SizedBox(
           width: 120.0,
           child: TextField(
@@ -80,7 +82,7 @@ class QuantitySelector extends StatelessWidget {
             ),
           ),
         ),
-        AppDimens.spaceWidth16,
+        _dimens.spaceWidth16,
         FloatingActionButton(
             heroTag: "removeBtn",
             onPressed: () => onTimerSelectorCallback(-1),
@@ -109,7 +111,7 @@ class QuantitySelector extends StatelessWidget {
               const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ));
-      options.add(AppDimens.spaceWidth16);
+      options.add(_dimens.spaceWidth16);
     }
     if (info.showDeleteButton) {
       options.add(FloatingActionButton(
@@ -122,7 +124,7 @@ class QuantitySelector extends StatelessWidget {
             color: Colors.white,
           )));
     }
-    options.add(AppDimens.spaceWidth16);
+    options.add(_dimens.spaceWidth16);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: options,
