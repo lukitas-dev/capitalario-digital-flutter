@@ -1,4 +1,5 @@
 import 'package:app/core/constants/constants.dart';
+import 'package:app/given/constants/given_constants.dart';
 import 'package:app/home/constants/home_constants.dart';
 import 'package:app/pray/constants/pray_constants.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -20,6 +21,7 @@ class AppConfig {
     var defaultValues = <String, dynamic>{};
     defaultValues[AppConstants.homeInfoKey] = HomeConstants.infoDefaults;
     defaultValues[AppConstants.prayInfoKey] = PrayConstants.infoDefaults;
+    defaultValues[AppConstants.givenInfoKey] = GivenConstants.infoDefaults;
     return defaultValues;
   }
 
