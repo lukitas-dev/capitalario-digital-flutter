@@ -7,6 +7,9 @@ class AppConstants {
   //given
   static const String givenInfoKey = "givenInfo";
   static const String givenMenu = "Entrega";
+  //viewer
+  static const String viewerInfoKey = "viewerInfo";
+  static const String viewerMenu = "Visualizar";
 
   static CollectionConstants get collections => CollectionConstants();
 }
