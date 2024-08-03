@@ -85,7 +85,7 @@ class QuantitySelector extends StatelessWidget {
             heroTag: "removeBtn",
             onPressed: () => onTimerSelectorCallback(-1),
             elevation: 4,
-            backgroundColor: backgroundColor,
+            backgroundColor: backgroundColor ?? Colors.blueGrey,
             child: Icon(
               Icons.remove,
               color: iconsTintColor ?? Colors.white,

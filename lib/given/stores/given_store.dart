@@ -68,9 +68,14 @@ abstract class _GivenStoreBase with Store {
     state = AppState.loading;
     AppRepository.given.addCapital(capital, (id) {
       showAlert = true;
+      _updateStatus();
       state = AppState.success;
     }, () {
       state = AppState.failure;
     });
+  }
+
+  _updateStatus() async {
+    await AppRepository.main.createOrUpdateStatus(quantity);
   }
 }

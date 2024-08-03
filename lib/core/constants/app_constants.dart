@@ -3,6 +3,7 @@ class AppConstants {
   MenuConstants get menu => MenuConstants();
   CollectionConstants get collections => CollectionConstants();
   DocumentConstants get documents => DocumentConstants();
+  FieldConstants get fields => FieldConstants();
 }
 
 class ConfigConstants {
@@ -25,4 +26,8 @@ class CollectionConstants {
 
 class DocumentConstants {
   String get status => "status";
+}
+
+class FieldConstants {
+  String get numberOfCapitalOfGrace => "numberOfCapitalOfGrace";
 }
