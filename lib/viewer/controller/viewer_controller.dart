@@ -1,4 +1,4 @@
-import 'package:app/core/infrastructure/app_colors.dart';
+import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/viewer/models/live_box.dart';
 import 'package:app/viewer/models/viewer_info.dart';
@@ -67,7 +67,7 @@ class ViewerController {
         height: 100.0,
         color: liveBox.isCompleted
             ? Colors.transparent
-            : AppColors.fromHex(_info.boxesBackgroundcolor),
+            : AppCore.infra.colors.fromHex(_info.boxesBackgroundcolor),
         child: liveBox.isCompleted
             ? _showImage(liveBox)
             : _showImageWithOpacity(liveBox),

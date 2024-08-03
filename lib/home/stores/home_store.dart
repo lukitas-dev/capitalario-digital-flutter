@@ -1,4 +1,3 @@
-import 'package:app/core/constants/constants.dart';
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/home/models/home_info.dart';
@@ -14,7 +13,7 @@ abstract class _HomeStoreBase with Store {
   AppState state = AppState.loading;
 
   setup(HomeSetupCallback callback) {
-    var json = AppCore.config.getString(AppConstants.homeInfoKey);
+    var json = AppCore.config.getString(AppCore.constants.config.homeInfo);
     var info = HomeInfo.fromJson(json);
     callback(info);
     state = AppState.ready;

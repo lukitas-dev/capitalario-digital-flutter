@@ -1,6 +1,6 @@
+import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_assets.dart';
-import 'package:app/core/infrastructure/app_colors.dart';
-import 'package:app/core/infrastructure/app_menu.dart';
+import 'package:app/core/infrastructure/app_routes.dart';
 import 'package:app/core/infrastructure/app_settings.dart';
 import 'package:app/core/layout/desktop_layout.dart';
 import 'package:app/core/layout/mobile_layout.dart';
@@ -10,6 +10,7 @@ import 'package:app/core/ui/navbar.dart';
 import 'package:app/core/ui/sidemenu.dart';
 import 'package:app/core/ui/toolbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class AppLayout extends StatelessWidget {
   final String? pageTitle;
@@ -30,12 +31,18 @@ class AppLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = AppCore.infra.colors;
     var screenSize = MediaQuery.of(context).size;
-    var menuItens = AppMenu.list();
+    var menuItens = AppCore.infra.menu.load();
     return ResponsiveLayout(
         desktopLayout: DesktopLayout(
-          backgroundColor: AppColors.background,
-          navbar: NavBar(opacity: 0, menuItens: menuItens),
+          backgroundColor: colors.background,
+          navbar: NavBar(
+            title: AppSettings.name,
+            onTitleClick: () => Modular.to.navigate(AppRoutes.home.path),
+            opacity: 0,
+            menuItens: menuItens,
+          ),
           header: header ?? Container(),
           body: body,
           footer: const Footer(
@@ -43,18 +50,18 @@ class AppLayout extends StatelessWidget {
           ),
         ),
         mobileLayout: MobileLayout(
-          backgroundColor: AppColors.background,
+          backgroundColor: colors.background,
           appBar: Toolbar(
             hasBack: hasBack,
             onBackCallback: onBackCallback,
             title:
                 pageTitle != null ? pageTitle!.toUpperCase() : AppSettings.name,
-            titleStyle: const TextStyle(
+            titleStyle: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: AppColors.browLight),
-            onBackColor: AppColors.browLight,
-            backgroundColor: AppColors.grey,
+                color: colors.browLight),
+            onBackColor: colors.browLight,
+            backgroundColor: colors.grey,
           ),
           drawer: SideMenu(
             header: SizedBox(

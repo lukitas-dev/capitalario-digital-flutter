@@ -1,18 +1,26 @@
-import 'package:app/core/infrastructure/app_colors.dart';
-import 'package:app/core/infrastructure/app_routes.dart';
-import 'package:app/core/models/menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'package:app/core/infrastructure/app_routes.dart';
+import 'package:app/core/models/menu_item.dart';
+
 class SideMenu extends StatelessWidget {
+  final Color? backgroundColor;
+  final Color? textColor;
   final Widget? header;
   final List<MenuItem> menuItens;
-  const SideMenu({super.key, required this.menuItens, this.header});
+  const SideMenu({
+    Key? key,
+    this.backgroundColor,
+    this.textColor,
+    this.header,
+    required this.menuItens,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: AppColors.grey,
+      backgroundColor: backgroundColor ?? Colors.grey,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
@@ -31,9 +39,9 @@ class SideMenu extends StatelessWidget {
       ));
     }
     list.add(ListTile(
-      title: const Text(
+      title: Text(
         "Home",
-        style: TextStyle(color: AppColors.browLight, fontSize: 20),
+        style: TextStyle(color: textColor ?? Colors.white, fontSize: 20),
       ),
       onTap: () => Modular.to.navigate(AppRoutes.home.path),
     ));

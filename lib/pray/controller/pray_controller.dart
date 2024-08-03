@@ -1,4 +1,3 @@
-import 'package:app/core/infrastructure/app_colors.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/core/ui/header.dart';
 import 'package:app/pray/models/pray_info.dart';
@@ -19,7 +18,7 @@ class PrayController {
     if (info.headerImagePath.isNotEmpty) {
       return Header(
           backgroundImage: AssetImage(info.headerImagePath),
-          backgroundGradientColor: AppColors.black,
+          backgroundGradientColor: Colors.black,
           title: info.title,
           titleTextStyle: const TextStyle(fontWeight: FontWeight.bold));
     }

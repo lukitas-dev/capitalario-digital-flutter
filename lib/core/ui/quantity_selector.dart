@@ -1,7 +1,7 @@
-import 'package:app/core/infrastructure/app_colors.dart';
+import 'package:flutter/material.dart';
+
 import 'package:app/core/infrastructure/app_dimens.dart';
 import 'package:app/core/models/quantity_field_info.dart';
-import 'package:flutter/material.dart';
 
 typedef QuantitySelectorCallback = void Function(int number);
 
@@ -10,12 +10,20 @@ class QuantitySelector extends StatelessWidget {
   final QuantitySelectorCallback onTimerSelectorCallback;
   final VoidCallback onClearCallback;
   final TextEditingController quantity;
+  final Color? backgroundColor;
+  final Color? iconsTintColor;
+  final Color? textColor;
+  final Color? inputColor;
   const QuantitySelector({
     Key? key,
     required this.info,
     required this.onTimerSelectorCallback,
     required this.onClearCallback,
     required this.quantity,
+    this.backgroundColor,
+    this.iconsTintColor,
+    this.textColor,
+    this.inputColor,
   }) : super(key: key);
 
   @override
@@ -40,10 +48,10 @@ class QuantitySelector extends StatelessWidget {
           heroTag: "addBtn",
           onPressed: () => onTimerSelectorCallback(1),
           elevation: 4,
-          backgroundColor: AppColors.grey,
-          child: const Icon(
+          backgroundColor: backgroundColor ?? Colors.blueGrey,
+          child: Icon(
             Icons.add,
-            color: AppColors.white,
+            color: iconsTintColor ?? Colors.white,
           ),
         ),
         AppDimens.spaceWidth16,
@@ -51,22 +59,22 @@ class QuantitySelector extends StatelessWidget {
           width: 120.0,
           child: TextField(
             controller: quantity,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: AppColors.black,
+              color: inputColor ?? Colors.black,
             ),
             textAlign: TextAlign.center,
             enabled: false,
             decoration: InputDecoration(
               filled: true,
-              fillColor: AppColors.white,
+              fillColor: Colors.white,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(40.0),
               ),
               hintText: info.hint,
               hintStyle: const TextStyle(
-                color: AppColors.black,
+                color: Colors.grey,
                 fontSize: 20,
               ),
             ),
@@ -77,10 +85,10 @@ class QuantitySelector extends StatelessWidget {
             heroTag: "removeBtn",
             onPressed: () => onTimerSelectorCallback(-1),
             elevation: 4,
-            backgroundColor: AppColors.grey,
-            child: const Icon(
+            backgroundColor: backgroundColor,
+            child: Icon(
               Icons.remove,
-              color: AppColors.white,
+              color: iconsTintColor ?? Colors.white,
             )),
       ],
     );
@@ -94,7 +102,7 @@ class QuantitySelector extends StatelessWidget {
         heroTag: "plus${quantityOption.description}}",
         onPressed: () => onTimerSelectorCallback(quantityOption.value),
         elevation: 4,
-        backgroundColor: AppColors.grey,
+        backgroundColor: backgroundColor ?? Colors.blueGrey,
         child: Text(
           quantityOption.description,
           style:
@@ -108,10 +116,10 @@ class QuantitySelector extends StatelessWidget {
           heroTag: "deleteBtn",
           onPressed: () => onClearCallback(),
           elevation: 4,
-          backgroundColor: AppColors.red,
+          backgroundColor: Colors.red,
           child: const Icon(
             Icons.delete,
-            color: AppColors.white,
+            color: Colors.white,
           )));
     }
     options.add(AppDimens.spaceWidth16);

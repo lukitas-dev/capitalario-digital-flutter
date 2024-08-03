@@ -1,13 +1,18 @@
 import 'dart:developer';
 
-import 'package:app/core/infrastructure/app_colors.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app/core/infrastructure/app_colors.dart';
 
 class Footer extends StatelessWidget {
   final bool isMobile;
+  final Color? backgroundColor;
+  final Color? textColor;
   const Footer({
     Key? key,
     this.isMobile = true,
+    this.backgroundColor,
+    this.textColor,
   }) : super(key: key);
 
   @override
@@ -16,28 +21,28 @@ class Footer extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       width: MediaQuery.of(context).size.width,
       height: isMobile ? 180 : 250,
-      color: AppColors.grey,
+      color: backgroundColor ?? Colors.grey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             'Developed by Lucas Cruz',
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: AppColors.browLight),
+                color: textColor ?? Colors.amber),
           ),
           TextButton(
               onPressed: () => log("onClick"),
-              child: const Text(
+              child: Text(
                 'Reportar Problema',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.red),
+                    color: textColor ?? Colors.amber),
               )),
           const SizedBox(
             height: 30,

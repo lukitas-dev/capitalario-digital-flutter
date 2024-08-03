@@ -1,4 +1,4 @@
-import 'package:app/core/infrastructure/app_colors.dart';
+import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/core/models/widget_options.dart';
 import 'package:app/core/ui/button_box.dart';
@@ -22,7 +22,7 @@ class HomeController {
     if (info.headerImagePath.isNotEmpty) {
       return Header(
           backgroundImage: AssetImage(info.headerImagePath),
-          backgroundGradientColor: AppColors.black,
+          backgroundGradientColor: Colors.black,
           title: info.title,
           titleTextStyle: const TextStyle(fontWeight: FontWeight.bold));
     }
@@ -58,10 +58,10 @@ class HomeController {
         widgetList.add(ButtonBox(
           onTap: () => Modular.to.navigate(buttonInfo.routePath),
           options: WidgetOptions(
-              borderColor: AppColors.fromHex(info.buttonStyle.borderColor),
+              borderColor: AppCore.infra.colors.fromHex(info.buttonStyle.borderColor),
               backgroundColor:
-                  AppColors.fromHex(info.buttonStyle.backgroundColor),
-              textColor: AppColors.fromHex(info.buttonStyle.textColor),
+                  AppCore.infra.colors.fromHex(info.buttonStyle.backgroundColor),
+              textColor: AppCore.infra.colors.fromHex(info.buttonStyle.textColor),
               height: info.buttonStyle.height,
               borderRadius: info.buttonStyle.borderRadius,
               textFontSize: info.buttonStyle.textFontSize),

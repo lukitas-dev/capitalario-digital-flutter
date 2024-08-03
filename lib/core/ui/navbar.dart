@@ -1,15 +1,23 @@
-import 'package:app/core/infrastructure/app_colors.dart';
-import 'package:app/core/infrastructure/app_routes.dart';
-import 'package:app/core/infrastructure/app_settings.dart';
-import 'package:app/core/models/menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'package:app/core/models/menu_item.dart';
+
 class NavBar extends StatefulWidget {
+  final String title;
+  final VoidCallback onTitleClick;
+  final Color? titleColor;
+  final Color? titleOnHoverColor;
+  final Color? dividerColor;
   final double opacity;
   final List<MenuItem> menuItens;
   const NavBar({
     Key? key,
+    required this.title,
+    required this.onTitleClick,
+    this.titleColor,
+    this.titleOnHoverColor,
+    this.dividerColor,
     required this.opacity,
     required this.menuItens,
   }) : super(key: key);
@@ -43,11 +51,14 @@ class _NavBarWidgetState extends State<NavBar> {
                             value ? isHovering = true : isHovering = false;
                           });
                         },
-                        onTap: () => Modular.to.navigate(AppRoutes.home.path),
+                        onTap: widget.onTitleClick,
                         child: Text(
-                          AppSettings.name,
+                          widget.title,
                           style: TextStyle(
-                              color: isHovering ? AppColors.accent : AppColors.black, fontSize: 20),
+                              color: isHovering
+                                  ? widget.titleOnHoverColor ?? Colors.amber
+                                  : widget.titleColor ?? Colors.black,
+                              fontSize: 20),
                         ),
                       ),
                     ),
@@ -59,8 +70,8 @@ class _NavBarWidgetState extends State<NavBar> {
                       width: 200,
                     )
                   ]),
-                  const Divider(
-                    color: AppColors.white,
+                  Divider(
+                    color: widget.dividerColor ?? Colors.white,
                     thickness: 2,
                   )
                 ]))));

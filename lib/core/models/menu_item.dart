@@ -1,4 +1,3 @@
-import 'package:app/core/infrastructure/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class MenuItem {
@@ -14,9 +13,9 @@ class MenuItem {
     required this.title,
     required this.routePath,
     this.isHovering = false,
-    this.textColor = AppColors.browLight,
-    this.onHoverColor = AppColors.white,
+    this.textColor = const Color(0xffDEB077),
+    this.onHoverColor = Colors.white,
     this.textSize = 20,
-    this.indicationColor = AppColors.white,
+    this.indicationColor = Colors.white,
   });
 }

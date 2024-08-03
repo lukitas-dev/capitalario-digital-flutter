@@ -1,5 +1,7 @@
-import 'package:app/core/infrastructure/app_colors.dart';
+import 'package:app/core/core.dart';
+import 'package:app/core/infrastructure/app_assets.dart';
 import 'package:app/core/infrastructure/app_dimens.dart';
+import 'package:app/core/infrastructure/app_routes.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/core/models/field_info.dart';
 import 'package:app/core/models/widget_options.dart';
@@ -11,8 +13,10 @@ import 'package:app/core/ui/quantity_selector.dart';
 import 'package:app/given/models/given_info.dart';
 import 'package:app/given/stores/given_store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class GivenController {
+  final _colors = AppCore.infra.colors;
   GivenStore store = GivenStore();
   late GivenInfo info;
 
@@ -100,9 +104,9 @@ class GivenController {
           await store.sendCapital();
         },
         options: WidgetOptions(
-            borderColor: AppColors.grey,
-            backgroundColor: AppColors.blue,
-            textColor: AppColors.white,
+            borderColor: _colors.grey,
+            backgroundColor: _colors.blue,
+            textColor: _colors.white,
             width: 240,
             height: 60,
             borderRadius: 30,
@@ -117,9 +121,10 @@ class GivenController {
   showSendAlert(BuildContext context) async {
     store.showAlert = false;
     await Future.delayed(const Duration(seconds: 3));
+    var image = Image.asset(AppAssets.giveSuccess.path, height: 200);
     var alert = info.sendAlert;
-    AppAlerts.showSendCapitalAlert(
-        context, alert.title, alert.description, alert.button);
+    AppAlerts.showSendCapitalAlert(context, alert.title, alert.description,
+        alert.button, () => Modular.to.navigate(AppRoutes.home.path), image);
   }
 
   AppState getState() {
