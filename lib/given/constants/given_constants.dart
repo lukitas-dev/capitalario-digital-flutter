@@ -5,6 +5,7 @@ import 'package:app/core/models/quantity_option.dart';
 import 'package:app/given/models/given_info.dart';
 
 class GivenConstants {
+  static const String collectionName = "GivenCapital";
   static String get infoDefaults => GivenInfo(
           headerImagePath: "",
           fieldList: [
@@ -20,7 +21,7 @@ class GivenConstants {
                 QuantityOption(description: "5", value: 5),
                 QuantityOption(description: "10", value: 10)
               ],
-              showDeleteButton:true,
+              showDeleteButton: true,
               maxValue: 10,
               hint: "cg"),
           sendTitleButton: "Enviar",

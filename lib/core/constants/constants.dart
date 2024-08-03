@@ -7,4 +7,11 @@ class AppConstants {
   //given
   static const String givenInfoKey = "givenInfo";
   static const String givenMenu = "Entrega";
+
+  static CollectionConstants get collections => CollectionConstants();
+}
+
+class CollectionConstants {
+  static const String main = "CapitalarioDigital";
+  static const String given = "GivenCapital";
 }

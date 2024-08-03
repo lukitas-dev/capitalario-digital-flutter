@@ -1,6 +1,9 @@
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_state.dart';
+import 'package:app/core/repository/app_repository.dart';
+import 'package:app/core/utils/app_utils.dart';
+import 'package:app/given/models/capital_info.dart';
 import 'package:app/given/models/given_info.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
@@ -11,10 +14,11 @@ typedef GivenSetupCallback = Function(GivenInfo info);
 class GivenStore = _GivenStoreBase with _$GivenStore;
 
 abstract class _GivenStoreBase with Store {
-  
+  final String _timestamp = AppUtils.getDateNow();
+
   @observable
   AppState state = AppState.loading;
-  
+
   @observable
   int quantity = 0;
 
@@ -23,10 +27,9 @@ abstract class _GivenStoreBase with Store {
 
   @observable
   TextEditingController capitalQuantity = TextEditingController();
-  
+
   @observable
   bool showAlert = false;
-
 
   setup(GivenSetupCallback callback) {
     var json = AppCore.config.getString(AppConstants.givenInfoKey);
@@ -35,7 +38,7 @@ abstract class _GivenStoreBase with Store {
     state = AppState.ready;
   }
 
-   @action
+  @action
   update(int n) {
     quantity += n;
     if (quantity < 0) {
@@ -56,11 +59,19 @@ abstract class _GivenStoreBase with Store {
   }
 
   @computed
+  CapitalInfo get capital =>
+      CapitalInfo(timestamp: _timestamp, quantity: quantity, offer: offer);
+
+  @computed
   bool get enableSendButton => true;
 
-  
   Future<void> sendCapital() async {
     state = AppState.loading;
-   
+    AppRepository.given.addCapital(capital, (id) {
+      showAlert = true;
+      state = AppState.loading;
+    }, () {
+      state = AppState.failure;
+    });
   }
 }

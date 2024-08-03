@@ -2,8 +2,8 @@ import 'package:app/core/infrastructure/app_colors.dart';
 import 'package:app/core/infrastructure/app_dimens.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/core/models/field_info.dart';
-import 'package:app/core/models/quantity_field_info.dart';
 import 'package:app/core/models/widget_options.dart';
+import 'package:app/core/ui/alerts.dart';
 import 'package:app/core/ui/button_box.dart';
 import 'package:app/core/ui/dropdown_box.dart';
 import 'package:app/core/ui/header.dart';
@@ -114,7 +114,18 @@ class GivenController {
     }
   }
 
+  showSendAlert(BuildContext context) async {
+    await Future.delayed(const Duration(seconds: 3));
+    var alert = info.sendAlert;
+    AppAlerts.showSendCapitalAlert(
+        context, alert.title, alert.description, alert.button);
+  }
+
   AppState getState() {
     return store.state;
+  }
+
+  bool showAlert() {
+    return store.showAlert;
   }
 }
