@@ -69,7 +69,7 @@ abstract class _GivenStoreBase with Store {
     state = AppState.loading;
     AppRepository.given.addCapital(capital, (id) {
       showAlert = true;
-      state = AppState.loading;
+      state = AppState.success;
     }, () {
       state = AppState.failure;
     });

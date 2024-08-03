@@ -32,8 +32,8 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.child(AppRoutes.home.path, child: (context) => const HomePage());
-    r.child(AppRoutes.pray.path, child: (context) => const PrayPage());
-    r.child(AppRoutes.given.path, child: (context) => const GivenPage());
+    r.child(AppRoutes.home.path, child: (context) => const HomePage(), transition: TransitionType.fadeIn);
+    r.child(AppRoutes.pray.path, child: (context) => const PrayPage(), transition: TransitionType.fadeIn);
+    r.child(AppRoutes.given.path, child: (context) => const GivenPage(), transition: TransitionType.fadeIn);
   }
 }

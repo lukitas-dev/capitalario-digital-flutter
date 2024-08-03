@@ -115,6 +115,7 @@ class GivenController {
   }
 
   showSendAlert(BuildContext context) async {
+    store.showAlert = false;
     await Future.delayed(const Duration(seconds: 3));
     var alert = info.sendAlert;
     AppAlerts.showSendCapitalAlert(

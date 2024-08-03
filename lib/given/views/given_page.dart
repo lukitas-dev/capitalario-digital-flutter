@@ -30,6 +30,7 @@ class _GivenPageState extends State<GivenPage> {
     return AppLayout(body: Observer(
       builder: (_) {
         switch (_controller.getState()) {
+          case AppState.success:
           case AppState.loading:
             if (_controller.showAlert()) {
               _controller.showSendAlert(context);
