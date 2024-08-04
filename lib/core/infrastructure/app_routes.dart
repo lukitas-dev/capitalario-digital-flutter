@@ -1,7 +1,8 @@
 enum AppRoutes {
   home(path: "/"),
   pray(path: "/pray"),
-  given(path: "/given");
+  given(path: "/given"),
+  viewer(path: "/viewer");
 
   const AppRoutes({required this.path});
 

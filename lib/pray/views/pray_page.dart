@@ -1,5 +1,4 @@
 import 'package:app/core/core.dart';
-import 'package:app/core/infrastructure/app_dimens.dart';
 import 'package:app/core/infrastructure/app_screen.dart';
 import 'package:app/core/layout/app_layout.dart';
 import 'package:app/pray/controller/pray_controller.dart';
@@ -14,6 +13,7 @@ class PrayPage extends StatefulWidget {
 
 class _PrayPageState extends State<PrayPage> {
   final _controller = PrayController();
+  final _dimens = AppCore.infra.dimens;
 
   @override
   void initState() {
@@ -30,9 +30,9 @@ class _PrayPageState extends State<PrayPage> {
   Widget _buildBody(BuildContext context) {
     List<Widget> widgetList = [];
     widgetList.add(_controller.buildHeader());
-    widgetList.add(AppDimens.spaceHeigh24);
+    widgetList.add(_dimens.spaceHeigh24);
     widgetList.add(_controller.buildTitle());
-    widgetList.add(AppDimens.spaceHeigh8);
+    widgetList.add(_dimens.spaceHeigh8);
     widgetList.add(_controller.buildText());
 
     return Column(

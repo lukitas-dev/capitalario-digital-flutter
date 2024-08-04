@@ -1,10 +1,13 @@
-import 'package:app/core/constants/constants.dart';
+import 'package:app/core/core.dart';
 import 'package:app/given/constants/given_constants.dart';
 import 'package:app/home/constants/home_constants.dart';
 import 'package:app/pray/constants/pray_constants.dart';
+import 'package:app/viewer/constants/viewer_constants.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 class AppConfig {
+  final _constants = AppCore.constants.config;
+
   setupAndFetch() async {
     final remoteConfig = FirebaseRemoteConfig.instance;
     await remoteConfig.setConfigSettings(RemoteConfigSettings(
@@ -19,9 +22,11 @@ class AppConfig {
 
   Map<String, dynamic> prepareDefaultValues() {
     var defaultValues = <String, dynamic>{};
-    defaultValues[AppConstants.homeInfoKey] = HomeConstants.infoDefaults;
-    defaultValues[AppConstants.prayInfoKey] = PrayConstants.infoDefaults;
-    defaultValues[AppConstants.givenInfoKey] = GivenConstants.infoDefaults;
+    defaultValues[_constants.homeInfo] = HomeConstants.infoDefaults;
+    defaultValues[_constants.prayInfo] = PrayConstants.infoDefaults;
+    defaultValues[_constants.givenInfo] = GivenConstants.infoDefaults;
+    defaultValues[_constants.viewerInfo] = ViewerConstants.infoDefaults;
+    defaultValues[_constants.settingsInfo] = _constants.settingsDefaults;
     return defaultValues;
   }
 

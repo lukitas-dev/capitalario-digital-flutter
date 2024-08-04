@@ -1,4 +1,3 @@
-import 'package:app/core/infrastructure/app_colors.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
@@ -17,18 +16,18 @@ class DropdownBox extends StatelessWidget {
     required this.hint,
     this.hintTextStyle = const TextStyle(
       fontSize: 18,
-      color: AppColors.black,
+      color: Colors.black,
     ),
     required this.itemList,
     this.itemTextStyle = const TextStyle(
       fontSize: 18,
-      color: AppColors.black,
+      color: Colors.black,
     ),
     required this.onSelect, 
     this.selectedTextStyle = const TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.bold,
-      color: AppColors.black,
+      color: Colors.black,
     )
   }) : super(key: key);
 
@@ -38,7 +37,7 @@ class DropdownBox extends StatelessWidget {
       isExpanded: true,
       decoration: InputDecoration(
         filled: true,
-        fillColor: AppColors.white,
+        fillColor: Colors.white,
         contentPadding: const EdgeInsets.symmetric(vertical: 16),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),

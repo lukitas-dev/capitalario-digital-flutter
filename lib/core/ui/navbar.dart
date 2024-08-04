@@ -1,17 +1,36 @@
-import 'package:app/core/infrastructure/app_colors.dart';
-import 'package:app/core/infrastructure/app_routes.dart';
-import 'package:app/core/infrastructure/app_settings.dart';
-import 'package:app/core/models/menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'package:app/core/models/menu_item.dart';
+
 class NavBar extends StatefulWidget {
-  final double opacity;
+  final String title;
+  final VoidCallback onTitleClick;
   final List<MenuItem> menuItens;
+  final double opacity;
+  final double? titleTextSize;
+  final Color? titleColor;
+  final Color? titleOnHoverColor;
+  final Color? dividerColor;
+  final double? textSize;
+  final Color? textColor;
+  final Color? onHoverColor;
+  final Color? indicationColor;
+
   const NavBar({
     Key? key,
-    required this.opacity,
+    required this.title,
+    required this.onTitleClick,
     required this.menuItens,
+    required this.opacity,
+    this.titleTextSize,
+    this.titleColor,
+    this.titleOnHoverColor,
+    this.dividerColor,
+    this.textSize,
+    this.textColor,
+    this.onHoverColor,
+    this.indicationColor,
   }) : super(key: key);
 
   @override
@@ -43,11 +62,14 @@ class _NavBarWidgetState extends State<NavBar> {
                             value ? isHovering = true : isHovering = false;
                           });
                         },
-                        onTap: () => Modular.to.navigate(AppRoutes.home.path),
+                        onTap: widget.onTitleClick,
                         child: Text(
-                          AppSettings.name,
+                          widget.title,
                           style: TextStyle(
-                              color: isHovering ? AppColors.accent : AppColors.black, fontSize: 20),
+                              color: isHovering
+                                  ? widget.titleOnHoverColor ?? Colors.amber
+                                  : widget.titleColor ?? Colors.black,
+                              fontSize: widget.titleTextSize),
                         ),
                       ),
                     ),
@@ -59,8 +81,8 @@ class _NavBarWidgetState extends State<NavBar> {
                       width: 200,
                     )
                   ]),
-                  const Divider(
-                    color: AppColors.white,
+                  Divider(
+                    color: widget.dividerColor ?? Colors.white,
                     thickness: 2,
                   )
                 ]))));
@@ -83,8 +105,10 @@ class _NavBarWidgetState extends State<NavBar> {
             Text(
               item.title,
               style: TextStyle(
-                fontSize: 20,
-                color: item.isHovering ? item.onHoverColor : item.textColor,
+                fontSize: widget.textSize,
+                color: item.isHovering
+                    ? widget.onHoverColor ?? Colors.amber
+                    : widget.textColor ?? Colors.black,
               ),
             ),
             const SizedBox(height: 5),
@@ -96,7 +120,7 @@ class _NavBarWidgetState extends State<NavBar> {
               child: Container(
                 height: 2,
                 width: 20,
-                color: item.indicationColor,
+                color: widget.indicationColor ?? Colors.amber,
               ),
             )
           ],

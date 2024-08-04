@@ -1,12 +1,14 @@
-import 'package:app/core/constants/constants.dart';
-import 'package:app/core/infrastructure/app_routes.dart';
+import 'package:app/core/config/models/menu_item_info.dart';
 import 'package:app/core/models/menu_item.dart';
 
 class AppMenu {
-  static List<MenuItem> list() {
-    return [
-      MenuItem(title: AppConstants.prayMenu, routePath: AppRoutes.pray.path),
-      MenuItem(title: AppConstants.givenMenu, routePath: AppRoutes.given.path)
-    ];
+  List<MenuItem> load(List<MenuItemInfo> itemList) {
+    List<MenuItem> list = [];
+    for (var item in itemList) {
+      if (item.isEnabled) {
+        list.add(MenuItem(title: item.title, routePath: item.routePath));
+      }
+    }
+    return list;
   }
 }

@@ -5,7 +5,6 @@ import 'package:app/core/models/quantity_option.dart';
 import 'package:app/given/models/given_info.dart';
 
 class GivenConstants {
-  static const String collectionName = "GivenCapital";
   static String get infoDefaults => GivenInfo(
           headerImagePath: "",
           fieldList: [

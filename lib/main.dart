@@ -1,9 +1,9 @@
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_routes.dart';
-import 'package:app/core/infrastructure/app_settings.dart';
 import 'package:app/given/views/given_page.dart';
 import 'package:app/home/views/home_page.dart';
 import 'package:app/pray/views/pray_page.dart';
+import 'package:app/viewer/views/viewer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -19,7 +19,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: AppSettings.name,
+      title: AppCore.getSettings().name,
       theme: ThemeData(primarySwatch: Colors.blue),
       routerConfig: Modular.routerConfig,
     );
@@ -35,5 +35,6 @@ class AppModule extends Module {
     r.child(AppRoutes.home.path, child: (context) => const HomePage(), transition: TransitionType.fadeIn);
     r.child(AppRoutes.pray.path, child: (context) => const PrayPage(), transition: TransitionType.fadeIn);
     r.child(AppRoutes.given.path, child: (context) => const GivenPage(), transition: TransitionType.fadeIn);
+    r.child(AppRoutes.viewer.path, child: (context) => const ViewerPage(), transition: TransitionType.fadeIn);
   }
 }

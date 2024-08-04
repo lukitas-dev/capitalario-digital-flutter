@@ -1,4 +1,3 @@
-import 'package:app/core/constants/constants.dart';
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/pray/models/pray_info.dart';
@@ -14,7 +13,7 @@ abstract class _PrayStoreBase with Store {
   AppState state = AppState.loading;
 
   setup(PraySetupCallback callback) {
-    var json = AppCore.config.getString(AppConstants.prayInfoKey);
+    var json = AppCore.config.getString(AppCore.constants.config.prayInfo);
     var info = PrayInfo.fromJson(json);
     callback(info);
     state = AppState.ready;

@@ -3,20 +3,19 @@ import 'package:app/core/infrastructure/app_assets.dart';
 import 'package:app/core/infrastructure/app_screen.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/core/layout/app_layout.dart';
-import 'package:app/given/controller/given_controller.dart';
+import 'package:app/viewer/controller/viewer_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class GivenPage extends StatefulWidget {
-  const GivenPage({super.key});
+class ViewerPage extends StatefulWidget {
+  const ViewerPage({super.key});
 
   @override
-  State<GivenPage> createState() => _GivenPageState();
+  State<ViewerPage> createState() => _ViewerPageState();
 }
 
-class _GivenPageState extends State<GivenPage> {
-  final _controller = GivenController();
-  final _dimens = AppCore.infra.dimens;
+class _ViewerPageState extends State<ViewerPage> {
+  final _controller = ViewerController();
 
   @override
   void initState() {
@@ -26,15 +25,11 @@ class _GivenPageState extends State<GivenPage> {
 
   @override
   Widget build(BuildContext context) {
-    AppCore.analytics.trackScreen(AppScreen.given);
+    AppCore.analytics.trackScreen(AppScreen.viewer);
     return AppLayout(body: Observer(
       builder: (_) {
         switch (_controller.getState()) {
-          case AppState.success:
           case AppState.loading:
-            if (_controller.showAlert()) {
-              _controller.showSendAlert(context);
-            }
             return Center(
               child: Image.asset(
                 AppAssets.loading.path,
@@ -54,17 +49,6 @@ class _GivenPageState extends State<GivenPage> {
   }
 
   Widget _buildBody(BuildContext context) {
-    List<Widget> widgetList = [];
-    widgetList.add(_controller.buildHeader());
-    widgetList.add(_dimens.spaceHeigh24);
-    widgetList.add(_controller.buildDropdownField(
-        context, _controller.info.fieldList.first));
-    widgetList.add(_dimens.spaceHeigh16);
-    widgetList.add(_controller.buildQuantitySelectorField(context));
-    widgetList.add(_dimens.spaceHeigh16);
-    widgetList.add(_controller.buildSendButton(context));
-
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.center, children: widgetList);
+    return _controller.buildBoxes();
   }
 }

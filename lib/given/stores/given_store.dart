@@ -1,4 +1,3 @@
-import 'package:app/core/constants/constants.dart';
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/core/repository/app_repository.dart';
@@ -32,7 +31,7 @@ abstract class _GivenStoreBase with Store {
   bool showAlert = false;
 
   setup(GivenSetupCallback callback) {
-    var json = AppCore.config.getString(AppConstants.givenInfoKey);
+    var json = AppCore.config.getString(AppCore.constants.config.givenInfo);
     var info = GivenInfo.fromJson(json);
     callback(info);
     state = AppState.ready;
@@ -69,9 +68,14 @@ abstract class _GivenStoreBase with Store {
     state = AppState.loading;
     AppRepository.given.addCapital(capital, (id) {
       showAlert = true;
+      _updateStatus();
       state = AppState.success;
     }, () {
       state = AppState.failure;
     });
+  }
+
+  _updateStatus() async {
+    await AppRepository.main.createOrUpdateStatus(quantity);
   }
 }
