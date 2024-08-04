@@ -26,6 +26,7 @@ class AppConfig {
     defaultValues[_constants.prayInfo] = PrayConstants.infoDefaults;
     defaultValues[_constants.givenInfo] = GivenConstants.infoDefaults;
     defaultValues[_constants.viewerInfo] = ViewerConstants.infoDefaults;
+    defaultValues[_constants.settingsInfo] = _constants.settingsDefaults;
     return defaultValues;
   }
 

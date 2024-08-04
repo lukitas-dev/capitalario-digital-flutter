@@ -13,8 +13,8 @@ class MenuItem {
     required this.title,
     required this.routePath,
     this.isHovering = false,
-    this.textColor = const Color(0xffDEB077),
-    this.onHoverColor = Colors.white,
+    this.textColor = Colors.amber,
+    this.onHoverColor = Colors.amber,
     this.textSize = 20,
     this.indicationColor = Colors.white,
   });

@@ -1,5 +1,5 @@
 import 'package:app/core/core.dart';
-import 'package:app/core/models/app_status.dart';
+import 'package:app/core/repository/models/status_info.dart';
 import 'package:app/core/repository/app_repository.dart';
 import 'package:app/viewer/models/viewer_info.dart';
 
@@ -14,7 +14,7 @@ class MainRepository {
       if (obj == null) {
         create(quantity);
       } else {
-        var status = AppStatus.fromMap(obj);
+        var status = StatusInfo.fromMap(obj);
         var quantityUpdated = status.numberOfCapitalOfGrace + quantity;
         update(quantityUpdated);
       }
@@ -27,7 +27,7 @@ class MainRepository {
     var capitalOfGraceTarget = viewerInfo.gridInfo.numberOfColumns *
         viewerInfo.gridInfo.numberOfRows *
         viewerInfo.gridInfo.targetDefault;
-    var status = AppStatus(
+    var status = StatusInfo(
         capitalOfGraceTarget: capitalOfGraceTarget,
         numberOfBlocks: viewerInfo.boxList.length,
         numberOfCapitalOfGrace: quantity,
@@ -56,8 +56,8 @@ class MainRepository {
       if (obj == null) {
         create();
       } else {
-         var status = AppStatus.fromMap(obj);
-         callback(status.numberOfCapitalOfGrace);
+        var status = StatusInfo.fromMap(obj);
+        callback(status.numberOfCapitalOfGrace);
       }
     }, () {});
   }

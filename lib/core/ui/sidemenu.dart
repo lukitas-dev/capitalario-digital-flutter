@@ -8,12 +8,14 @@ class SideMenu extends StatelessWidget {
   final Color? backgroundColor;
   final Color? textColor;
   final Widget? header;
+  final String? homeTitle;
   final List<MenuItem> menuItens;
   const SideMenu({
     Key? key,
     this.backgroundColor,
     this.textColor,
     this.header,
+    this.homeTitle,
     required this.menuItens,
   }) : super(key: key);
 
@@ -40,8 +42,8 @@ class SideMenu extends StatelessWidget {
     }
     list.add(ListTile(
       title: Text(
-        "Home",
-        style: TextStyle(color: textColor ?? Colors.white, fontSize: 20),
+        homeTitle ?? "Home",
+        style: TextStyle(color: textColor ?? Colors.amber, fontSize: 20),
       ),
       onTap: () => Modular.to.navigate(AppRoutes.home.path),
     ));

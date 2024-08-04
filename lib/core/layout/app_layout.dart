@@ -1,7 +1,6 @@
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_assets.dart';
 import 'package:app/core/infrastructure/app_routes.dart';
-import 'package:app/core/infrastructure/app_settings.dart';
 import 'package:app/core/layout/desktop_layout.dart';
 import 'package:app/core/layout/mobile_layout.dart';
 import 'package:app/core/layout/responsive_layout.dart';
@@ -19,7 +18,7 @@ class AppLayout extends StatelessWidget {
   final Widget? header;
   final Widget body;
   final EdgeInsets mobileBodyPadding;
-  const AppLayout({
+  AppLayout({
     Key? key,
     this.pageTitle,
     this.hasBack = false,
@@ -29,16 +28,25 @@ class AppLayout extends StatelessWidget {
     this.mobileBodyPadding = const EdgeInsets.only(left: 26, right: 26),
   }) : super(key: key);
 
+  final _settings = AppCore.getSettings();
+
   @override
   Widget build(BuildContext context) {
     final colors = AppCore.infra.colors;
-    var screenSize = MediaQuery.of(context).size;
-    var menuItens = AppCore.infra.menu.load();
+    final screenSize = MediaQuery.of(context).size;
+    final menuItens = AppCore.infra.menu.load();
+    final backgroundColor =
+        AppCore.infra.colors.fromHex(_settings.backgroundColor);
+    final toolbarBackgroundColor =
+        AppCore.infra.colors.fromHex(_settings.toolbarBackgroundColor);
+    final sidemenuBackgroundColor =
+        AppCore.infra.colors.fromHex(_settings.sideMenuInfo.backgroundColor);
+
     return ResponsiveLayout(
         desktopLayout: DesktopLayout(
-          backgroundColor: colors.background,
+          backgroundColor: backgroundColor,
           navbar: NavBar(
-            title: AppSettings.name,
+            title: _settings.name,
             onTitleClick: () => Modular.to.navigate(AppRoutes.home.path),
             opacity: 0,
             menuItens: menuItens,
@@ -50,21 +58,21 @@ class AppLayout extends StatelessWidget {
           ),
         ),
         mobileLayout: MobileLayout(
-          backgroundColor: colors.background,
+          backgroundColor: backgroundColor,
           appBar: Toolbar(
             hasBack: hasBack,
             onBackCallback: onBackCallback,
             title:
-                pageTitle != null ? pageTitle!.toUpperCase() : AppSettings.name,
+                pageTitle != null ? pageTitle!.toUpperCase() : _settings.name,
             titleStyle: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: colors.browLight),
             onBackColor: colors.browLight,
-            backgroundColor: colors.grey,
+            backgroundColor: toolbarBackgroundColor,
           ),
-          drawer: SideMenu(
-            header: SizedBox(
+          drawer: _settings.isSideMenuEnabled ? SideMenu(
+            header: _settings.sideMenuInfo.showLogo ? SizedBox(
                 width: screenSize.width,
                 height: 150,
                 child: Center(
@@ -72,9 +80,11 @@ class AppLayout extends StatelessWidget {
                     AppAssets.logo.path,
                     width: 180,
                   ),
-                )),
+                )) : Container(),
             menuItens: menuItens,
-          ),
+            backgroundColor: sidemenuBackgroundColor,
+            homeTitle: _settings.sideMenuInfo.homeTitle,
+          ) : Container(),
           header: header ?? Container(),
           body: body,
           bodyPadding: mobileBodyPadding,

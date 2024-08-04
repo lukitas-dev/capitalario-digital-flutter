@@ -1,6 +1,5 @@
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_routes.dart';
-import 'package:app/core/infrastructure/app_settings.dart';
 import 'package:app/given/views/given_page.dart';
 import 'package:app/home/views/home_page.dart';
 import 'package:app/pray/views/pray_page.dart';
@@ -20,7 +19,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: AppSettings.name,
+      title: AppCore.getSettings().name,
       theme: ThemeData(primarySwatch: Colors.blue),
       routerConfig: Modular.routerConfig,
     );

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   Color get background => white;
-  Color get toolbarBackground => black;
+  Color get toolbarBackground => blue;
   Color get primary => blueLight;
   Color get primaryDark => blue;
   Color get accent => yellow;
 
   //Paleta
-  Color get blue => const Color(0xff2F4673);
+  Color get blue => const Color(0xff1F2549);
   Color get blueLight => const Color(0xff9ba7bf);
   Color get grey => const Color(0xff323232);
   Color get greyLight => const Color(0xffd9d9d9);

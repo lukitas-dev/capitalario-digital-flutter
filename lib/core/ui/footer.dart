@@ -2,8 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import 'package:app/core/infrastructure/app_colors.dart';
-
 class Footer extends StatelessWidget {
   final bool isMobile;
   final Color? backgroundColor;

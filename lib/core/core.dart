@@ -1,5 +1,6 @@
 import 'package:app/core/analytics/app_analytics.dart';
 import 'package:app/core/config/app_config.dart';
+import 'package:app/core/config/models/settings_info.dart';
 import 'package:app/core/constants/app_constants.dart';
 import 'package:app/core/database/app_database.dart';
 import 'package:app/core/infrastructure/insfrasctructure.dart';
@@ -17,5 +18,10 @@ class AppCore {
       options: infra.firebase.options,
     );
     await AppCore.config.setupAndFetch();
+  }
+
+  static SettingsInfo getSettings() {
+    var json = config.getString(constants.config.settingsInfo);
+    return SettingsInfo.fromJson(json);
   }
 }

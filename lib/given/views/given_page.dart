@@ -1,6 +1,5 @@
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_assets.dart';
-import 'package:app/core/infrastructure/app_dimensions.dart';
 import 'package:app/core/infrastructure/app_screen.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/core/layout/app_layout.dart';

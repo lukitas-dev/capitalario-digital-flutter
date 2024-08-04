@@ -123,8 +123,10 @@ class GivenController {
     await Future.delayed(const Duration(seconds: 3));
     var image = Image.asset(AppAssets.giveSuccess.path, height: 200);
     var alert = info.sendAlert;
-    AppAlerts.showSendCapitalAlert(context, alert.title, alert.description,
-        alert.button, () => Modular.to.navigate(AppRoutes.home.path), image);
+    if (context.mounted) {
+      AppAlerts.showSendCapitalAlert(context, alert.title, alert.description,
+          alert.button, () => Modular.to.navigate(AppRoutes.home.path), image);
+    }
   }
 
   AppState getState() {
