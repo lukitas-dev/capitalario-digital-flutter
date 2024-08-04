@@ -48,4 +48,5 @@ class DocumentConstants {
 
 class FieldConstants {
   String get numberOfCapitalOfGrace => "numberOfCapitalOfGrace";
+  String get numberOfSendedCapitalOfGrace => "numberOfSendedCapitalOfGrace";
 }

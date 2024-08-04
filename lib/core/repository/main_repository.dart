@@ -16,7 +16,7 @@ class MainRepository {
       } else {
         var status = StatusInfo.fromMap(obj);
         var quantityUpdated = status.numberOfCapitalOfGrace + quantity;
-        update(quantityUpdated);
+        update(status, quantityUpdated);
       }
     }, () {});
   }
@@ -39,12 +39,14 @@ class MainRepository {
     });
   }
 
-  update(int quantity) {
-    _database.updateDocumentOnlyField(
+  update(StatusInfo status, int quantity) {
+    var statusMap = status.toMap();
+    statusMap[_constants.fields.numberOfCapitalOfGrace] = quantity;
+    statusMap[_constants.fields.numberOfSendedCapitalOfGrace] = status.numberOfSendedCapitalOfGrace + 1;
+    _database.updateDocument(
         _constants.collections.main,
         _constants.documents.status,
-        _constants.fields.numberOfCapitalOfGrace,
-        quantity,
+        statusMap,
         (id) {}, () {
       // do nothing
     });

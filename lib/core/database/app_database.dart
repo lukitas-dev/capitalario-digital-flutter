@@ -72,7 +72,7 @@ class AppDatabase {
       OnErrorCallback onError) {
     var document = _getDocumentReference(collectionPath, documentId);
     document.update(data).then((value) {
-      log('DocumentSnapshot added with ID: $documentId');
+      log('DocumentSnapshot updated with ID: $documentId');
       onSuccess(documentId);
     }).onError((e, _) {
       log("Error updating document: $e");
