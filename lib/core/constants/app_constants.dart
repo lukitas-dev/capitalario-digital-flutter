@@ -1,4 +1,5 @@
 import 'package:app/core/config/models/menu_item_info.dart';
+import 'package:app/core/config/models/navbar_info.dart';
 import 'package:app/core/config/models/settings_info.dart';
 import 'package:app/core/config/models/sidemenu_info.dart';
 
@@ -19,16 +20,32 @@ class ConfigConstants {
   //settings
   String get settingsInfo => "settingsInfo";
   String get settingsDefaults => SettingsInfo(
-      name: "Capitalario Digital",
-      backgroundColor: "#FFFFFF",
-      toolbarBackgroundColor: "#1F2549",
-      isSideMenuEnabled: true,
-      sideMenuInfo: SideMenuInfo(backgroundColor: "#1F2549", showLogo: true, homeTitle: "Início"),
-      menuItemList: [
-        MenuItemInfo(title: "Oração", routePath: "/pray", isEnabled: true),
-        MenuItemInfo(title: "Entrega", routePath: "/given", isEnabled: true),
-        MenuItemInfo(title: "Visualizar", routePath: "/viewer", isEnabled: true),
-      ]).toJson();
+          name: "Capitalario Digital",
+          backgroundColor: "#FFFFFF",
+          toolbarBackgroundColor: "#1F2549",
+          isSideMenuEnabled: true,
+          sideMenuInfo: SideMenuInfo(
+              backgroundColor: "#1F2549",
+              showLogo: true,
+              homeTitle: "Início",
+              textColor: "#F6A44D",
+              textSize: 24),
+          navbarInfo: NavbarInfo(
+              titleTextSize: 30,
+              titleTextColor: "#1F2549",
+              titleOnHoverColor: "#F6A44D",
+              dividerColor: "#000000",
+              textSize: 24,
+              textColor: "#000000",
+              onHoverColor: "#F6A44D",
+              indicationColor: "#F6A44D"),
+          menuItemList: [
+            MenuItemInfo(title: "Oração", routePath: "/pray", isEnabled: true),
+            MenuItemInfo(
+                title: "Entrega", routePath: "/given", isEnabled: true),
+            MenuItemInfo(
+                title: "Visualizar", routePath: "/viewer", isEnabled: true),
+          ]).toJson();
 }
 
 class MenuConstants {

@@ -6,20 +6,31 @@ import 'package:app/core/models/menu_item.dart';
 class NavBar extends StatefulWidget {
   final String title;
   final VoidCallback onTitleClick;
+  final List<MenuItem> menuItens;
+  final double opacity;
+  final double? titleTextSize;
   final Color? titleColor;
   final Color? titleOnHoverColor;
   final Color? dividerColor;
-  final double opacity;
-  final List<MenuItem> menuItens;
+  final double? textSize;
+  final Color? textColor;
+  final Color? onHoverColor;
+  final Color? indicationColor;
+
   const NavBar({
     Key? key,
     required this.title,
     required this.onTitleClick,
+    required this.menuItens,
+    required this.opacity,
+    this.titleTextSize,
     this.titleColor,
     this.titleOnHoverColor,
     this.dividerColor,
-    required this.opacity,
-    required this.menuItens,
+    this.textSize,
+    this.textColor,
+    this.onHoverColor,
+    this.indicationColor,
   }) : super(key: key);
 
   @override
@@ -58,7 +69,7 @@ class _NavBarWidgetState extends State<NavBar> {
                               color: isHovering
                                   ? widget.titleOnHoverColor ?? Colors.amber
                                   : widget.titleColor ?? Colors.black,
-                              fontSize: 20),
+                              fontSize: widget.titleTextSize),
                         ),
                       ),
                     ),
@@ -94,8 +105,10 @@ class _NavBarWidgetState extends State<NavBar> {
             Text(
               item.title,
               style: TextStyle(
-                fontSize: 20,
-                color: item.isHovering ? item.onHoverColor : item.textColor,
+                fontSize: widget.textSize,
+                color: item.isHovering
+                    ? widget.onHoverColor ?? Colors.amber
+                    : widget.textColor ?? Colors.black,
               ),
             ),
             const SizedBox(height: 5),
@@ -107,7 +120,7 @@ class _NavBarWidgetState extends State<NavBar> {
               child: Container(
                 height: 2,
                 width: 20,
-                color: item.indicationColor,
+                color: widget.indicationColor ?? Colors.amber,
               ),
             )
           ],

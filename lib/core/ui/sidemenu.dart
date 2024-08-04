@@ -51,7 +51,7 @@ class SideMenu extends StatelessWidget {
       list.add(ListTile(
         title: Text(
           item.title,
-          style: TextStyle(color: item.textColor, fontSize: item.textSize),
+          style: TextStyle(color: textColor ?? Colors.amber, fontSize: 20),
         ),
         onTap: () => Modular.to.navigate(item.routePath),
       ));

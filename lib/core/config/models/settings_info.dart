@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import 'package:app/core/config/models/menu_item_info.dart';
+import 'package:app/core/config/models/navbar_info.dart';
 import 'package:app/core/config/models/sidemenu_info.dart';
 
 class SettingsInfo {
@@ -11,6 +12,7 @@ class SettingsInfo {
   final String toolbarBackgroundColor;
   final bool isSideMenuEnabled;
   final SideMenuInfo sideMenuInfo;
+  final NavbarInfo navbarInfo;
   final List<MenuItemInfo> menuItemList;
   SettingsInfo({
     required this.name,
@@ -18,6 +20,7 @@ class SettingsInfo {
     required this.toolbarBackgroundColor,
     required this.isSideMenuEnabled,
     required this.sideMenuInfo,
+    required this.navbarInfo,
     required this.menuItemList,
   });
 
@@ -27,6 +30,7 @@ class SettingsInfo {
     String? toolbarBackgroundColor,
     bool? isSideMenuEnabled,
     SideMenuInfo? sideMenuInfo,
+    NavbarInfo? navbarInfo,
     List<MenuItemInfo>? menuItemList,
   }) {
     return SettingsInfo(
@@ -35,6 +39,7 @@ class SettingsInfo {
       toolbarBackgroundColor: toolbarBackgroundColor ?? this.toolbarBackgroundColor,
       isSideMenuEnabled: isSideMenuEnabled ?? this.isSideMenuEnabled,
       sideMenuInfo: sideMenuInfo ?? this.sideMenuInfo,
+      navbarInfo: navbarInfo ?? this.navbarInfo,
       menuItemList: menuItemList ?? this.menuItemList,
     );
   }
@@ -47,6 +52,7 @@ class SettingsInfo {
     result.addAll({'toolbarBackgroundColor': toolbarBackgroundColor});
     result.addAll({'isSideMenuEnabled': isSideMenuEnabled});
     result.addAll({'sideMenuInfo': sideMenuInfo.toMap()});
+    result.addAll({'navbarInfo': navbarInfo.toMap()});
     result.addAll({'menuItemList': menuItemList.map((x) => x.toMap()).toList()});
   
     return result;
@@ -59,6 +65,7 @@ class SettingsInfo {
       toolbarBackgroundColor: map['toolbarBackgroundColor'] ?? '',
       isSideMenuEnabled: map['isSideMenuEnabled'] ?? false,
       sideMenuInfo: SideMenuInfo.fromMap(map['sideMenuInfo']),
+      navbarInfo: NavbarInfo.fromMap(map['navbarInfo']),
       menuItemList: List<MenuItemInfo>.from(map['menuItemList']?.map((x) => MenuItemInfo.fromMap(x))),
     );
   }
@@ -70,7 +77,7 @@ class SettingsInfo {
 
   @override
   String toString() {
-    return 'SettingsInfo(name: $name, backgroundColor: $backgroundColor, toolbarBackgroundColor: $toolbarBackgroundColor, isSideMenuEnabled: $isSideMenuEnabled, sideMenuInfo: $sideMenuInfo, menuItemList: $menuItemList)';
+    return 'SettingsInfo(name: $name, backgroundColor: $backgroundColor, toolbarBackgroundColor: $toolbarBackgroundColor, isSideMenuEnabled: $isSideMenuEnabled, sideMenuInfo: $sideMenuInfo, navbarInfo: $navbarInfo, menuItemList: $menuItemList)';
   }
 
   @override
@@ -83,6 +90,7 @@ class SettingsInfo {
       other.toolbarBackgroundColor == toolbarBackgroundColor &&
       other.isSideMenuEnabled == isSideMenuEnabled &&
       other.sideMenuInfo == sideMenuInfo &&
+      other.navbarInfo == navbarInfo &&
       listEquals(other.menuItemList, menuItemList);
   }
 
@@ -93,6 +101,7 @@ class SettingsInfo {
       toolbarBackgroundColor.hashCode ^
       isSideMenuEnabled.hashCode ^
       sideMenuInfo.hashCode ^
+      navbarInfo.hashCode ^
       menuItemList.hashCode;
   }
 }

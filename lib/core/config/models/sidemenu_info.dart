@@ -4,21 +4,29 @@ class SideMenuInfo {
   final String backgroundColor;
   final bool showLogo;
   final String homeTitle;
+  final String textColor;
+  final double textSize;
   SideMenuInfo({
     required this.backgroundColor,
     required this.showLogo,
     required this.homeTitle,
+    required this.textColor,
+    required this.textSize,
   });
 
   SideMenuInfo copyWith({
     String? backgroundColor,
     bool? showLogo,
     String? homeTitle,
+    String? textColor,
+    double? textSize,
   }) {
     return SideMenuInfo(
       backgroundColor: backgroundColor ?? this.backgroundColor,
       showLogo: showLogo ?? this.showLogo,
       homeTitle: homeTitle ?? this.homeTitle,
+      textColor: textColor ?? this.textColor,
+      textSize: textSize ?? this.textSize,
     );
   }
 
@@ -28,6 +36,8 @@ class SideMenuInfo {
     result.addAll({'backgroundColor': backgroundColor});
     result.addAll({'showLogo': showLogo});
     result.addAll({'homeTitle': homeTitle});
+    result.addAll({'textColor': textColor});
+    result.addAll({'textSize': textSize});
   
     return result;
   }
@@ -37,6 +47,8 @@ class SideMenuInfo {
       backgroundColor: map['backgroundColor'] ?? '',
       showLogo: map['showLogo'] ?? false,
       homeTitle: map['homeTitle'] ?? '',
+      textColor: map['textColor'] ?? '',
+      textSize: map['textSize']?.toDouble() ?? 0.0,
     );
   }
 
@@ -46,7 +58,9 @@ class SideMenuInfo {
       SideMenuInfo.fromMap(json.decode(source));
 
   @override
-  String toString() => 'SideMenuInfo(backgroundColor: $backgroundColor, showLogo: $showLogo, homeTitle: $homeTitle)';
+  String toString() {
+    return 'SideMenuInfo(backgroundColor: $backgroundColor, showLogo: $showLogo, homeTitle: $homeTitle, textColor: $textColor, textSize: $textSize)';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -55,9 +69,17 @@ class SideMenuInfo {
     return other is SideMenuInfo &&
       other.backgroundColor == backgroundColor &&
       other.showLogo == showLogo &&
-      other.homeTitle == homeTitle;
+      other.homeTitle == homeTitle &&
+      other.textColor == textColor &&
+      other.textSize == textSize;
   }
 
   @override
-  int get hashCode => backgroundColor.hashCode ^ showLogo.hashCode ^ homeTitle.hashCode;
+  int get hashCode {
+    return backgroundColor.hashCode ^
+      showLogo.hashCode ^
+      homeTitle.hashCode ^
+      textColor.hashCode ^
+      textSize.hashCode;
+  }
 }

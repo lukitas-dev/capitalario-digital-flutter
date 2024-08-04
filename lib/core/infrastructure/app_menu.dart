@@ -1,15 +1,14 @@
-import 'package:app/core/core.dart';
-import 'package:app/core/infrastructure/app_routes.dart';
+import 'package:app/core/config/models/menu_item_info.dart';
 import 'package:app/core/models/menu_item.dart';
 
 class AppMenu {
-  final _constants = AppCore.constants.menu;
-
-  List<MenuItem> load() {
-    return [
-      MenuItem(title: _constants.pray, routePath: AppRoutes.pray.path),
-      MenuItem(title: _constants.given, routePath: AppRoutes.given.path),
-      MenuItem(title: _constants.viewer, routePath: AppRoutes.viewer.path),
-    ];
+  List<MenuItem> load(List<MenuItemInfo> itemList) {
+    List<MenuItem> list = [];
+    for (var item in itemList) {
+      if (item.isEnabled) {
+        list.add(MenuItem(title: item.title, routePath: item.routePath));
+      }
+    }
+    return list;
   }
 }

@@ -34,22 +34,25 @@ class AppLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = AppCore.infra.colors;
     final screenSize = MediaQuery.of(context).size;
-    final menuItens = AppCore.infra.menu.load();
-    final backgroundColor =
-        AppCore.infra.colors.fromHex(_settings.backgroundColor);
-    final toolbarBackgroundColor =
-        AppCore.infra.colors.fromHex(_settings.toolbarBackgroundColor);
-    final sidemenuBackgroundColor =
-        AppCore.infra.colors.fromHex(_settings.sideMenuInfo.backgroundColor);
+    final menuItens = AppCore.infra.menu.load(_settings.menuItemList);
+    final navbarInfo = _settings.navbarInfo;
 
     return ResponsiveLayout(
         desktopLayout: DesktopLayout(
-          backgroundColor: backgroundColor,
+          backgroundColor: colors.fromHex(_settings.backgroundColor),
           navbar: NavBar(
             title: _settings.name,
             onTitleClick: () => Modular.to.navigate(AppRoutes.home.path),
             opacity: 0,
             menuItens: menuItens,
+            titleTextSize: navbarInfo.titleTextSize,
+            titleColor: colors.fromHex(navbarInfo.titleTextColor),
+            titleOnHoverColor: colors.fromHex(navbarInfo.titleOnHoverColor),
+            dividerColor: colors.fromHex(navbarInfo.dividerColor),
+            textSize: navbarInfo.textSize,
+            textColor: colors.fromHex(navbarInfo.textColor),
+            onHoverColor: colors.fromHex(navbarInfo.onHoverColor),
+            indicationColor: colors.fromHex(navbarInfo.indicationColor),
           ),
           header: header ?? Container(),
           body: body,
@@ -58,7 +61,7 @@ class AppLayout extends StatelessWidget {
           ),
         ),
         mobileLayout: MobileLayout(
-          backgroundColor: backgroundColor,
+          backgroundColor: colors.fromHex(_settings.backgroundColor),
           appBar: Toolbar(
             hasBack: hasBack,
             onBackCallback: onBackCallback,
@@ -69,7 +72,7 @@ class AppLayout extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: colors.browLight),
             onBackColor: colors.browLight,
-            backgroundColor: toolbarBackgroundColor,
+            backgroundColor: colors.fromHex(_settings.toolbarBackgroundColor),
           ),
           drawer: _settings.isSideMenuEnabled ? SideMenu(
             header: _settings.sideMenuInfo.showLogo ? SizedBox(
@@ -82,7 +85,7 @@ class AppLayout extends StatelessWidget {
                   ),
                 )) : Container(),
             menuItens: menuItens,
-            backgroundColor: sidemenuBackgroundColor,
+            backgroundColor: colors.fromHex(_settings.sideMenuInfo.backgroundColor),
             homeTitle: _settings.sideMenuInfo.homeTitle,
           ) : Container(),
           header: header ?? Container(),
