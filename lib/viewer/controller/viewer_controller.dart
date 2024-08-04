@@ -10,30 +10,54 @@ class ViewerController {
   final ViewerStore _store = ViewerStore();
   late ViewerInfo _info;
   late List<LiveBox> _liveBoxList;
+  int _total = 0;
 
   void setup() {
     _store.setup((viewerInfo, totalOfGiven) async {
       _info = viewerInfo;
+      _prepareLiveBoxes();
       await _processLiveBoxes(totalOfGiven);
     });
   }
 
-  _processLiveBoxes(int totalOfGiven) async {
+  _prepareLiveBoxes() {
     _liveBoxList = [];
-    int total = totalOfGiven;
     for (var box in _info.boxList) {
-      int target = box.target > 0 ? box.target : _info.gridInfo.targetDefault;
-      if (total >= target) {
-        total = total - target;
-        _liveBoxList
-            .add(LiveBox(current: target, isCompleted: true, boxInfo: box));
-      } else {
-        _liveBoxList
-            .add(LiveBox(current: total, isCompleted: false, boxInfo: box));
-        if (total != 0) {
-          total = 0;
-        }
+      _liveBoxList.add(LiveBox(current: 0, isCompleted: false, boxInfo: box));
+    }
+  }
+
+  _processLiveBoxes(int totalOfGiven) async {
+    _total = totalOfGiven;
+    if (_info.orderBoxCompletion.isEmpty ||
+        _info.orderBoxCompletion.length < _info.boxList.length) {
+      for (var i = 0; i < _liveBoxList.length; i++) {
+        _liveBoxList[i] = _proccessBox(i);
       }
+    } else {
+      for (var i = 0; i < _liveBoxList.length; i++) {
+        var index = _info.orderBoxCompletion[i];
+        _liveBoxList[index] = _proccessBox(index);
+      }
+    }
+  }
+
+  LiveBox _proccessBox(int index) {
+    final liveBox = _liveBoxList[index];
+    int target = liveBox.boxInfo.target > 0
+        ? liveBox.boxInfo.target
+        : _info.gridInfo.targetDefault;
+    if (_total >= target) {
+      _total = _total - target;
+      return LiveBox(
+          current: target, isCompleted: true, boxInfo: liveBox.boxInfo);
+    } else {
+      var current = _total;
+      if (_total != 0) {
+        _total = 0;
+      }
+      return LiveBox(
+          current: current, isCompleted: false, boxInfo: liveBox.boxInfo);
     }
   }
 
