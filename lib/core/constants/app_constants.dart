@@ -12,33 +12,33 @@ class AppConstants {
 }
 
 class ConfigConstants {
-  String get homeInfo => "homeInfo";
-  String get prayInfo => "prayInfo";
-  String get givenInfo => "givenInfo";
-  String get viewerInfo => "viewerInfo";
+  String get homeInfo => "homeInfoJufemENJ24";
+  String get prayInfo => "prayInfoJufemENJ24";
+  String get givenInfo => "givenInfoJufemENJ24";
+  String get viewerInfo => "viewerInfoJufemENJ24";
 
   //settings
   String get settingsInfo => "settingsInfo";
   String get settingsDefaults => SettingsInfo(
-          name: "Capitalario Digital",
+          name: "ENJ 2024",
           backgroundColor: "#FFFFFF",
-          toolbarBackgroundColor: "#1F2549",
+          toolbarBackgroundColor: "#910909",
           isSideMenuEnabled: true,
           sideMenuInfo: SideMenuInfo(
-              backgroundColor: "#1F2549",
+              backgroundColor: "#910909",
               showLogo: true,
               homeTitle: "Início",
-              textColor: "#F6A44D",
+              textColor: "#FFFFFF",
               textSize: 24),
           navbarInfo: NavbarInfo(
               titleTextSize: 30,
-              titleTextColor: "#1F2549",
-              titleOnHoverColor: "#F6A44D",
-              dividerColor: "#000000",
+              titleTextColor: "#910909",
+              titleOnHoverColor: "#da9c3b",
+              dividerColor: "#910909",
               textSize: 24,
-              textColor: "#000000",
-              onHoverColor: "#F6A44D",
-              indicationColor: "#F6A44D"),
+              textColor: "#910909",
+              onHoverColor: "#da9c3b",
+              indicationColor: "#da9c3b"),
           menuItemList: [
             MenuItemInfo(title: "Oração", routePath: "/pray", isEnabled: true),
             MenuItemInfo(
@@ -55,8 +55,8 @@ class MenuConstants {
 }
 
 class CollectionConstants {
-  String get main => "CapitalarioDigital";
-  String get given => "GivenCapital";
+  String get main => "CapitalarioDigitalJufemENJ24";
+  String get given => "GivenCapitalJufemENJ24";
 }
 
 class DocumentConstants {
