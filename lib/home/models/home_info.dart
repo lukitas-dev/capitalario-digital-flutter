@@ -6,6 +6,7 @@ import 'package:app/core/models/button_info.dart';
 import 'package:app/core/models/button_style_info.dart';
 
 class HomeInfo {
+  final String backgroundImagePath;
   final String headerImagePath;
   final String title;
   final String subtitle;
@@ -13,6 +14,7 @@ class HomeInfo {
   final List<ButtonInfo> buttonList;
   final ButtonStyleInfo buttonStyle;
   HomeInfo({
+    required this.backgroundImagePath,
     required this.headerImagePath,
     required this.title,
     required this.subtitle,
@@ -22,6 +24,7 @@ class HomeInfo {
   });
 
   HomeInfo copyWith({
+    String? backgroundImagePath,
     String? headerImagePath,
     String? title,
     String? subtitle,
@@ -30,6 +33,7 @@ class HomeInfo {
     ButtonStyleInfo? buttonStyle,
   }) {
     return HomeInfo(
+      backgroundImagePath: backgroundImagePath ?? this.backgroundImagePath,
       headerImagePath: headerImagePath ?? this.headerImagePath,
       title: title ?? this.title,
       subtitle: subtitle ?? this.subtitle,
@@ -42,6 +46,7 @@ class HomeInfo {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
   
+    result.addAll({'backgroundImagePath': backgroundImagePath});
     result.addAll({'headerImagePath': headerImagePath});
     result.addAll({'title': title});
     result.addAll({'subtitle': subtitle});
@@ -54,6 +59,7 @@ class HomeInfo {
 
   factory HomeInfo.fromMap(Map<String, dynamic> map) {
     return HomeInfo(
+      backgroundImagePath: map['backgroundImagePath'] ?? '',
       headerImagePath: map['headerImagePath'] ?? '',
       title: map['title'] ?? '',
       subtitle: map['subtitle'] ?? '',
@@ -70,7 +76,7 @@ class HomeInfo {
 
   @override
   String toString() {
-    return 'HomeInfo(headerImagePath: $headerImagePath, title: $title, subtitle: $subtitle, textColor: $textColor, buttonList: $buttonList, buttonStyle: $buttonStyle)';
+    return 'HomeInfo(backgroundImagePath: $backgroundImagePath, headerImagePath: $headerImagePath, title: $title, subtitle: $subtitle, textColor: $textColor, buttonList: $buttonList, buttonStyle: $buttonStyle)';
   }
 
   @override
@@ -78,6 +84,7 @@ class HomeInfo {
     if (identical(this, other)) return true;
   
     return other is HomeInfo &&
+      other.backgroundImagePath == backgroundImagePath &&
       other.headerImagePath == headerImagePath &&
       other.title == title &&
       other.subtitle == subtitle &&
@@ -88,7 +95,8 @@ class HomeInfo {
 
   @override
   int get hashCode {
-    return headerImagePath.hashCode ^
+    return backgroundImagePath.hashCode ^
+      headerImagePath.hashCode ^
       title.hashCode ^
       subtitle.hashCode ^
       textColor.hashCode ^

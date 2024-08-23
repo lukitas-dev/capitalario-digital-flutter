@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_assets.dart';
 import 'package:app/core/infrastructure/app_routes.dart';
@@ -8,8 +11,6 @@ import 'package:app/core/ui/footer.dart';
 import 'package:app/core/ui/navbar.dart';
 import 'package:app/core/ui/sidemenu.dart';
 import 'package:app/core/ui/toolbar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class AppLayout extends StatelessWidget {
   final String? pageTitle;
@@ -18,6 +19,7 @@ class AppLayout extends StatelessWidget {
   final Widget? header;
   final Widget body;
   final EdgeInsets mobileBodyPadding;
+   final String? mobileBackgroundImage;
   AppLayout({
     Key? key,
     this.pageTitle,
@@ -26,6 +28,7 @@ class AppLayout extends StatelessWidget {
     this.header,
     required this.body,
     this.mobileBodyPadding = const EdgeInsets.only(left: 26, right: 26),
+    this.mobileBackgroundImage,
   }) : super(key: key);
 
   final _settings = AppCore.getSettings();
@@ -62,6 +65,7 @@ class AppLayout extends StatelessWidget {
         ),
         mobileLayout: MobileLayout(
           backgroundColor: colors.fromHex(_settings.backgroundColor),
+          backgroundImage: mobileBackgroundImage,
           appBar: Toolbar(
             hasBack: hasBack,
             onBackCallback: onBackCallback,

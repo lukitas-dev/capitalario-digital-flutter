@@ -1,4 +1,5 @@
 import 'package:app/core/core.dart';
+import 'package:app/core/infrastructure/app_colors.dart';
 import 'package:app/core/infrastructure/app_state.dart';
 import 'package:app/core/models/widget_options.dart';
 import 'package:app/core/ui/button_box.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 class HomeController {
   HomeStore store = HomeStore();
   late HomeInfo info;
+  final AppColors _colors = AppCore.infra.colors;
 
   setup() {
     store.setup((homeInfo) {
@@ -34,7 +36,10 @@ class HomeController {
       return Text(
         info.title,
         textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: _colors.fromHex(info.textColor)),
       );
     }
     return Container();
@@ -45,7 +50,7 @@ class HomeController {
       return Text(
         info.subtitle,
         textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 20),
+        style: TextStyle(fontSize: 20, color: _colors.fromHex(info.textColor)),
       );
     }
     return Container();
@@ -74,6 +79,10 @@ class HomeController {
       return widgetList;
     }
     return [Container()];
+  }
+
+  String getBackgroundImage() {
+    return info.backgroundImagePath;
   }
 
   AppState getState() {
