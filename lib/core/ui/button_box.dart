@@ -43,7 +43,6 @@ class ButtonBox extends StatelessWidget {
       child: Text(text,
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontWeight: FontWeight.w400,
               fontSize: options.textFontSize,
               color: options.textColor)),
     );

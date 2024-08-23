@@ -70,8 +70,8 @@ class AppLayout extends StatelessWidget {
             titleStyle: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: colors.browLight),
-            onBackColor: colors.browLight,
+                color: colors.fromHex(_settings.toolbarTextColor)),
+            onBackColor: colors.fromHex(_settings.toolbarTextColor),
             backgroundColor: colors.fromHex(_settings.toolbarBackgroundColor),
           ),
           drawer: _settings.isSideMenuEnabled ? SideMenu(

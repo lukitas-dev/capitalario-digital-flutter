@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:app/core/core.dart';
 import 'package:flutter/material.dart';
 
 class Footer extends StatelessWidget {
@@ -15,36 +14,40 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
+    var height = isMobile ? 120.0 : 180.0;
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: isMobile ? 180 : 250,
-      color: backgroundColor ?? Colors.grey,
+      height: height,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            'Developed by Lucas Cruz',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: textColor ?? Colors.amber),
-          ),
-          TextButton(
-              onPressed: () => log("onClick"),
+          Container(
+            height: height * 0.6,
+            color: AppCore.infra.colors.yellow,
+            child: Center(
               child: Text(
-                'Reportar Problema',
-                textAlign: TextAlign.center,
+                "@jufembrasil",
                 style: TextStyle(
-                    fontSize: 12,
+                    color: textColor ?? Colors.white,
                     fontWeight: FontWeight.bold,
-                    color: textColor ?? Colors.amber),
-              )),
-          const SizedBox(
-            height: 30,
-          )
+                    fontSize: 24),
+              ),
+            ),
+          ),
+          Container(
+            height: height * 0.4,
+            color: AppCore.infra.colors.grey,
+            child: Center(
+                child: Text(
+              'Desenvolvido por Lucas Cruz',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: textColor ?? Colors.white),
+            )),
+          ),
         ],
       ),
     );

@@ -10,6 +10,7 @@ class SettingsInfo {
   final String name;
   final String backgroundColor;
   final String toolbarBackgroundColor;
+  final String toolbarTextColor;
   final bool isSideMenuEnabled;
   final SideMenuInfo sideMenuInfo;
   final NavbarInfo navbarInfo;
@@ -18,6 +19,7 @@ class SettingsInfo {
     required this.name,
     required this.backgroundColor,
     required this.toolbarBackgroundColor,
+    required this.toolbarTextColor,
     required this.isSideMenuEnabled,
     required this.sideMenuInfo,
     required this.navbarInfo,
@@ -28,6 +30,7 @@ class SettingsInfo {
     String? name,
     String? backgroundColor,
     String? toolbarBackgroundColor,
+    String? toolbarTextColor,
     bool? isSideMenuEnabled,
     SideMenuInfo? sideMenuInfo,
     NavbarInfo? navbarInfo,
@@ -37,6 +40,7 @@ class SettingsInfo {
       name: name ?? this.name,
       backgroundColor: backgroundColor ?? this.backgroundColor,
       toolbarBackgroundColor: toolbarBackgroundColor ?? this.toolbarBackgroundColor,
+      toolbarTextColor: toolbarTextColor ?? this.toolbarTextColor,
       isSideMenuEnabled: isSideMenuEnabled ?? this.isSideMenuEnabled,
       sideMenuInfo: sideMenuInfo ?? this.sideMenuInfo,
       navbarInfo: navbarInfo ?? this.navbarInfo,
@@ -50,6 +54,7 @@ class SettingsInfo {
     result.addAll({'name': name});
     result.addAll({'backgroundColor': backgroundColor});
     result.addAll({'toolbarBackgroundColor': toolbarBackgroundColor});
+    result.addAll({'toolbarTextColor': toolbarTextColor});
     result.addAll({'isSideMenuEnabled': isSideMenuEnabled});
     result.addAll({'sideMenuInfo': sideMenuInfo.toMap()});
     result.addAll({'navbarInfo': navbarInfo.toMap()});
@@ -63,6 +68,7 @@ class SettingsInfo {
       name: map['name'] ?? '',
       backgroundColor: map['backgroundColor'] ?? '',
       toolbarBackgroundColor: map['toolbarBackgroundColor'] ?? '',
+      toolbarTextColor: map['toolbarTextColor'] ?? '',
       isSideMenuEnabled: map['isSideMenuEnabled'] ?? false,
       sideMenuInfo: SideMenuInfo.fromMap(map['sideMenuInfo']),
       navbarInfo: NavbarInfo.fromMap(map['navbarInfo']),
@@ -77,7 +83,7 @@ class SettingsInfo {
 
   @override
   String toString() {
-    return 'SettingsInfo(name: $name, backgroundColor: $backgroundColor, toolbarBackgroundColor: $toolbarBackgroundColor, isSideMenuEnabled: $isSideMenuEnabled, sideMenuInfo: $sideMenuInfo, navbarInfo: $navbarInfo, menuItemList: $menuItemList)';
+    return 'SettingsInfo(name: $name, backgroundColor: $backgroundColor, toolbarBackgroundColor: $toolbarBackgroundColor, toolbarTextColor: $toolbarTextColor, isSideMenuEnabled: $isSideMenuEnabled, sideMenuInfo: $sideMenuInfo, navbarInfo: $navbarInfo, menuItemList: $menuItemList)';
   }
 
   @override
@@ -88,6 +94,7 @@ class SettingsInfo {
       other.name == name &&
       other.backgroundColor == backgroundColor &&
       other.toolbarBackgroundColor == toolbarBackgroundColor &&
+      other.toolbarTextColor == toolbarTextColor &&
       other.isSideMenuEnabled == isSideMenuEnabled &&
       other.sideMenuInfo == sideMenuInfo &&
       other.navbarInfo == navbarInfo &&
@@ -99,6 +106,7 @@ class SettingsInfo {
     return name.hashCode ^
       backgroundColor.hashCode ^
       toolbarBackgroundColor.hashCode ^
+      toolbarTextColor.hashCode ^
       isSideMenuEnabled.hashCode ^
       sideMenuInfo.hashCode ^
       navbarInfo.hashCode ^

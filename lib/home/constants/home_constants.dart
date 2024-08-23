@@ -5,16 +5,22 @@ import 'package:app/home/models/home_info.dart';
 class HomeConstants {
   static String get infoDefaults => HomeInfo(
           headerImagePath: "",
-          title: "Coloque seu titulo aqui",
-          subtitle: "subtitulo aqui",
+          title: "Instrumentos da esperança",
+          subtitle: "vamos contigo Pai!",
           textColor: "#000000",
-          buttonList: [ButtonInfo(title: "Botao A", routePath: "/test")],
+          buttonList: [
+            ButtonInfo(title: "Acessar “Dá-nos Luz”", routePath: "/test"),
+            ButtonInfo(title: "Visualizar Desafios", routePath: "/test"),
+            ButtonInfo(title: "Entrega do Capital de Graça", routePath: "/test"),
+            ButtonInfo(title: "Visualizar Capitalário", routePath: "/test"),
+            ButtonInfo(title: "Visualizar Ranking", routePath: "/test"),
+          ],
           buttonStyle: ButtonStyleInfo(
               textColor: "#FFFFFF",
-              borderColor: "#3e2b16",
-              backgroundColor: "#3e2b16",
+              borderColor: "#910909",
+              backgroundColor: "#910909",
               height: 60,
               borderRadius: 30,
-              textFontSize: 22))
+              textFontSize: 18))
       .toJson();
 }

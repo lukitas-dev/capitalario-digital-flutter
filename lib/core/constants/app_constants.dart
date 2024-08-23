@@ -18,11 +18,12 @@ class ConfigConstants {
   String get viewerInfo => "viewerInfoJufemENJ24";
 
   //settings
-  String get settingsInfo => "settingsInfo";
+  String get settingsInfo => "settingsInfoENJ24";
   String get settingsDefaults => SettingsInfo(
           name: "ENJ 2024",
           backgroundColor: "#FFFFFF",
           toolbarBackgroundColor: "#910909",
+          toolbarTextColor: "#FFFFFF",
           isSideMenuEnabled: true,
           sideMenuInfo: SideMenuInfo(
               backgroundColor: "#910909",

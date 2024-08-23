@@ -14,7 +14,7 @@ class AppColors {
   Color get greyLight => const Color(0xffd9d9d9);
   Color get brow => const Color(0xff3e2b16);
   Color get browLight => const Color(0xffDEB077);
-  Color get yellow => const Color(0xffF2AC29);
+  Color get yellow => const Color(0xffDA9C3B);
   Color get red => const Color(0xffF21D1D);
   Color get white => const Color(0xffD9D6C7);
   Color get black => const Color(0xff262626);

@@ -58,15 +58,18 @@ class HomeController {
         widgetList.add(ButtonBox(
           onTap: () => Modular.to.navigate(buttonInfo.routePath),
           options: WidgetOptions(
-              borderColor: AppCore.infra.colors.fromHex(info.buttonStyle.borderColor),
-              backgroundColor:
-                  AppCore.infra.colors.fromHex(info.buttonStyle.backgroundColor),
-              textColor: AppCore.infra.colors.fromHex(info.buttonStyle.textColor),
+              borderColor:
+                  AppCore.infra.colors.fromHex(info.buttonStyle.borderColor),
+              backgroundColor: AppCore.infra.colors
+                  .fromHex(info.buttonStyle.backgroundColor),
+              textColor:
+                  AppCore.infra.colors.fromHex(info.buttonStyle.textColor),
               height: info.buttonStyle.height,
               borderRadius: info.buttonStyle.borderRadius,
               textFontSize: info.buttonStyle.textFontSize),
           text: buttonInfo.title,
         ));
+        widgetList.add(AppCore.infra.dimens.spaceHeigh16);
       }
       return widgetList;
     }

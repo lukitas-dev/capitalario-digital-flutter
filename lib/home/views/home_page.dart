@@ -34,7 +34,9 @@ class _HomePageState extends State<HomePage> {
     widgetList.add(_controller.buildTitle());
     widgetList.add(_dimens.spaceHeigh8);
     widgetList.add(_controller.buildSubtitle());
+    widgetList.add(_dimens.spaceHeigh64);
     widgetList.addAll(_controller.buildButtonList());
+    widgetList.add(_dimens.spaceHeigh64);
 
     return Column(
         crossAxisAlignment: CrossAxisAlignment.center, children: widgetList);
