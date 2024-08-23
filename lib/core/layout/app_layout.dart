@@ -81,15 +81,17 @@ class AppLayout extends StatelessWidget {
           drawer: _settings.isSideMenuEnabled ? SideMenu(
             header: _settings.sideMenuInfo.showLogo ? SizedBox(
                 width: screenSize.width,
-                height: 150,
+                height: 250,
                 child: Center(
                   child: Image.asset(
-                    AppAssets.logo.path,
-                    width: 180,
+                    AppAssets.logoMenu.path,
+                    width: 250,
+                    fit: BoxFit.fill,
                   ),
                 )) : Container(),
             menuItens: menuItens,
             backgroundColor: colors.fromHex(_settings.sideMenuInfo.backgroundColor),
+            textColor: colors.fromHex(_settings.sideMenuInfo.textColor),
             homeTitle: _settings.sideMenuInfo.homeTitle,
           ) : Container(),
           header: header ?? Container(),

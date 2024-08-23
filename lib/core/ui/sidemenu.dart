@@ -23,11 +23,8 @@ class SideMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: backgroundColor ?? Colors.grey,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: ListView(
-          children: _getItens(context),
-        ),
+      child: ListView(
+        children: _getItens(context),
       ),
     );
   }
@@ -40,21 +37,27 @@ class SideMenu extends StatelessWidget {
         height: 2,
       ));
     }
-    list.add(ListTile(
+    list.add(Padding(padding: const EdgeInsets.only(left: 16, top: 8), child: ListTile(
       title: Text(
         homeTitle ?? "Home",
-        style: TextStyle(color: textColor ?? Colors.amber, fontSize: 20),
+        style: TextStyle(
+            color: textColor ?? Colors.amber,
+            fontSize: 24,
+            fontWeight: FontWeight.bold),
       ),
       onTap: () => Modular.to.navigate(AppRoutes.home.path),
-    ));
+    )));
     for (var item in menuItens) {
-      list.add(ListTile(
+      list.add(Padding(padding: const EdgeInsets.only(left: 16, top: 8), child:  ListTile(
         title: Text(
           item.title,
-          style: TextStyle(color: textColor ?? Colors.amber, fontSize: 20),
+          style: TextStyle(
+              color: textColor ?? Colors.amber,
+              fontSize: 24,
+              fontWeight: FontWeight.bold),
         ),
         onTap: () => Modular.to.navigate(item.routePath),
-      ));
+      )));
     }
     return list;
   }

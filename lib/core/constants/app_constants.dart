@@ -41,11 +41,15 @@ class ConfigConstants {
               onHoverColor: "#da9c3b",
               indicationColor: "#da9c3b"),
           menuItemList: [
-            MenuItemInfo(title: "Oração", routePath: "/pray", isEnabled: true),
+            MenuItemInfo(title: "Dá-nos Luz", routePath: "/givenUsLight", isEnabled: true),
+            MenuItemInfo(
+                title: "Desafios", routePath: "/challenges", isEnabled: true),
             MenuItemInfo(
                 title: "Entrega", routePath: "/given", isEnabled: true),
             MenuItemInfo(
-                title: "Visualizar", routePath: "/viewer", isEnabled: true),
+                title: "Capitalário", routePath: "/viewer", isEnabled: true),
+            MenuItemInfo(
+                title: "Ranking", routePath: "/ranking", isEnabled: true),
           ]).toJson();
 }
 
