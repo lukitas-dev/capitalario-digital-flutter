@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:app/core/models/alert_info.dart';
 import 'package:app/core/models/button_style_info.dart';
 import 'package:app/core/models/field_info.dart';

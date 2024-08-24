@@ -27,7 +27,7 @@ class AppUtils {
 
   static String getDocIdFromString(String value) {
     log("tranform $value in unique Id");
-    var id = "DocumentID" + value.hashCode.toString();
+    var id = "DocumentID ${value.hashCode.toString()}";
     log("genereted id -> $id");
     return id;
   }

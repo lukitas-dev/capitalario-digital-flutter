@@ -13,7 +13,6 @@ import 'package:app/core/ui/quantity_selector.dart';
 import 'package:app/given/models/given_info.dart';
 import 'package:app/given/stores/given_store.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class GivenController {
