@@ -1,11 +1,11 @@
 {
-    "name": "app",
-    "short_name": "app",
+    "name": "ENJ24",
+    "short_name": "ENJ24",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#910909",
+    "theme_color": "#910909",
+    "description": "Encontro Nacional da Jufem 2024",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
