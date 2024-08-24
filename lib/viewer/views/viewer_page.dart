@@ -26,7 +26,10 @@ class _ViewerPageState extends State<ViewerPage> {
   @override
   Widget build(BuildContext context) {
     AppCore.analytics.trackScreen(AppScreen.viewer);
-    return AppLayout(body: Observer(
+    return AppLayout(
+      pageTitle: _controller.getTitle(),
+      mobileBodyPadding: const EdgeInsets.all(24),
+      body: Observer(
       builder: (_) {
         switch (_controller.getState()) {
           case AppState.loading:

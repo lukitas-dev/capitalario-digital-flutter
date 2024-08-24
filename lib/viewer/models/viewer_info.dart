@@ -6,11 +6,13 @@ import 'package:app/viewer/models/box_info.dart';
 import 'package:app/viewer/models/grid_info.dart';
 
 class ViewerInfo {
+  final String toolbarTitle;
   final GridInfo gridInfo;
   final List<BoxInfo> boxList;
   final String boxesBackgroundcolor;
   final List<int> orderBoxCompletion;
   ViewerInfo({
+    required this.toolbarTitle,
     required this.gridInfo,
     required this.boxList,
     required this.boxesBackgroundcolor,
@@ -18,12 +20,14 @@ class ViewerInfo {
   });
 
   ViewerInfo copyWith({
+    String? toolbarTitle,
     GridInfo? gridInfo,
     List<BoxInfo>? boxList,
     String? boxesBackgroundcolor,
     List<int>? orderBoxCompletion,
   }) {
     return ViewerInfo(
+      toolbarTitle: toolbarTitle ?? this.toolbarTitle,
       gridInfo: gridInfo ?? this.gridInfo,
       boxList: boxList ?? this.boxList,
       boxesBackgroundcolor: boxesBackgroundcolor ?? this.boxesBackgroundcolor,
@@ -34,6 +38,7 @@ class ViewerInfo {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
   
+    result.addAll({'toolbarTitle': toolbarTitle});
     result.addAll({'gridInfo': gridInfo.toMap()});
     result.addAll({'boxList': boxList.map((x) => x.toMap()).toList()});
     result.addAll({'boxesBackgroundcolor': boxesBackgroundcolor});
@@ -44,6 +49,7 @@ class ViewerInfo {
 
   factory ViewerInfo.fromMap(Map<String, dynamic> map) {
     return ViewerInfo(
+      toolbarTitle: map['toolbarTitle'] ?? '',
       gridInfo: GridInfo.fromMap(map['gridInfo']),
       boxList: List<BoxInfo>.from(map['boxList']?.map((x) => BoxInfo.fromMap(x))),
       boxesBackgroundcolor: map['boxesBackgroundcolor'] ?? '',
@@ -58,7 +64,7 @@ class ViewerInfo {
 
   @override
   String toString() {
-    return 'ViewerInfo(gridInfo: $gridInfo, boxList: $boxList, boxesBackgroundcolor: $boxesBackgroundcolor, orderBoxCompletion: $orderBoxCompletion)';
+    return 'ViewerInfo(toolbarTitle: $toolbarTitle, gridInfo: $gridInfo, boxList: $boxList, boxesBackgroundcolor: $boxesBackgroundcolor, orderBoxCompletion: $orderBoxCompletion)';
   }
 
   @override
@@ -66,6 +72,7 @@ class ViewerInfo {
     if (identical(this, other)) return true;
   
     return other is ViewerInfo &&
+      other.toolbarTitle == toolbarTitle &&
       other.gridInfo == gridInfo &&
       listEquals(other.boxList, boxList) &&
       other.boxesBackgroundcolor == boxesBackgroundcolor &&
@@ -74,7 +81,8 @@ class ViewerInfo {
 
   @override
   int get hashCode {
-    return gridInfo.hashCode ^
+    return toolbarTitle.hashCode ^
+      gridInfo.hashCode ^
       boxList.hashCode ^
       boxesBackgroundcolor.hashCode ^
       orderBoxCompletion.hashCode;

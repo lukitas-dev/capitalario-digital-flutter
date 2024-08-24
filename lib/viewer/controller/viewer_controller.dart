@@ -12,8 +12,8 @@ class ViewerController {
   late List<LiveBox> _liveBoxList;
   int _total = 0;
 
-  void setup() {
-    _store.setup((viewerInfo, totalOfGiven) async {
+  Future<void> setup() async {
+    await _store.setup((viewerInfo, totalOfGiven) async {
       _info = viewerInfo;
       _prepareLiveBoxes();
       await _processLiveBoxes(totalOfGiven);
@@ -128,5 +128,9 @@ class ViewerController {
 
   AppState getState() {
     return _store.state;
+  }
+
+  String getTitle() {
+    return "Capitalário";
   }
 }

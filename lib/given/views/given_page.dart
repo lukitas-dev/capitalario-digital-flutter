@@ -29,6 +29,7 @@ class _GivenPageState extends State<GivenPage> {
   Widget build(BuildContext context) {
     AppCore.analytics.trackScreen(AppScreen.given);
     return AppLayout(
+      pageTitle: _controller.getTitle(),
       mobileBodyPadding: const EdgeInsets.all(0),
       body: Observer(
         builder: (_) {

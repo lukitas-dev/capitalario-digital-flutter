@@ -174,4 +174,8 @@ class GivenController {
   bool showAlert() {
     return store.showAlert;
   }
+
+  String getTitle() {
+    return info.toolbarTitle;
+  }
 }

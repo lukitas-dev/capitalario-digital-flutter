@@ -4,10 +4,9 @@ import 'package:app/viewer/models/viewer_info.dart';
 
 class ViewerConstants {
   static String get infoDefaults => ViewerInfo(
-      gridInfo: GridInfo(
-        numberOfRows: 3, 
-        numberOfColumns: 3, 
-        targetDefault: 30),
+      toolbarTitle: "Capitalário",
+      gridInfo:
+          GridInfo(numberOfRows: 5, numberOfColumns: 3, targetDefault: 30),
       boxList: [
         BoxInfo(target: 0, imagePath: ""),
         BoxInfo(target: 0, imagePath: ""),
@@ -18,7 +17,13 @@ class ViewerConstants {
         BoxInfo(target: 0, imagePath: ""),
         BoxInfo(target: 0, imagePath: ""),
         BoxInfo(target: 0, imagePath: ""),
+        BoxInfo(target: 0, imagePath: ""),
+        BoxInfo(target: 0, imagePath: ""),
+        BoxInfo(target: 0, imagePath: ""),
+        BoxInfo(target: 0, imagePath: ""),
+        BoxInfo(target: 0, imagePath: ""),
+        BoxInfo(target: 0, imagePath: ""),
       ],
-      boxesBackgroundcolor: "#F21D1D",
+      boxesBackgroundcolor: "#910909",
       orderBoxCompletion: []).toJson();
 }

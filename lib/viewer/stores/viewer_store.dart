@@ -13,7 +13,7 @@ abstract class _ViewerStoreBase with Store {
   @observable
   AppState state = AppState.loading;
 
-  setup(ViewerSetupCallback callback) async {
+  Future<void> setup(ViewerSetupCallback callback) async {
     var json = AppCore.config.getString(AppCore.constants.config.viewerInfo);
     var info = ViewerInfo.fromJson(json);
 
