@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:app/core/infrastructure/app_assets.dart';
 import 'package:app/core/models/alert_info.dart';
 import 'package:app/core/models/button_style_info.dart';
