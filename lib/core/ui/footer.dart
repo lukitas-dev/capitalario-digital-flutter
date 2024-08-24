@@ -1,4 +1,5 @@
 import 'package:app/core/core.dart';
+import 'package:app/core/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 
 class Footer extends StatelessWidget {
@@ -26,13 +27,15 @@ class Footer extends StatelessWidget {
             height: height * 0.6,
             color: backgroundColor ?? AppCore.infra.colors.yellow,
             child: Center(
-              child: Text(
+              child: TextButton(
+              onPressed: () => AppUtils.openUrl("https://www.instagram.com/jufembrasil"),
+              child:Text(
                 "@jufembrasil",
                 style: TextStyle(
                     color: textColor ?? Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 24),
-              ),
+              )),
             ),
           ),
           Container(

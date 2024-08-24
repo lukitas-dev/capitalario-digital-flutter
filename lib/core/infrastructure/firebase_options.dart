@@ -13,8 +13,8 @@ class DefaultFirebaseOptions {
           projectId: "schoenstattapps",
           storageBucket: "schoenstattapps.appspot.com",
           messagingSenderId: "959352540933",
-          appId: "1:959352540933:web:d7942154582cc89727316c",
-          measurementId: "G-Q7L717678W");
+          appId: "1:959352540933:web:083101142ce3a68127316c",
+          measurementId: "G-6R5VW6TC7K");
     } else if (Platform.isIOS || Platform.isMacOS) {
       // iOS and MacOS
       return const FirebaseOptions(
@@ -23,8 +23,8 @@ class DefaultFirebaseOptions {
           projectId: "schoenstattapps",
           storageBucket: "schoenstattapps.appspot.com",
           messagingSenderId: "959352540933",
-          appId: "1:959352540933:web:d7942154582cc89727316c",
-          measurementId: "G-Q7L717678W");
+          appId: "1:959352540933:web:083101142ce3a68127316c",
+          measurementId: "G-6R5VW6TC7K");
     } else {
       // Android
       return const FirebaseOptions(
@@ -33,8 +33,8 @@ class DefaultFirebaseOptions {
           projectId: "schoenstattapps",
           storageBucket: "schoenstattapps.appspot.com",
           messagingSenderId: "959352540933",
-          appId: "1:959352540933:web:d7942154582cc89727316c",
-          measurementId: "G-Q7L717678W");
+          appId: "1:959352540933:web:083101142ce3a68127316c",
+          measurementId: "G-6R5VW6TC7K");
     }
   }
 }
