@@ -10,12 +10,16 @@ class QuantityFieldInfo {
   final bool showDeleteButton;
   final int maxValue;
   final String hint;
+  final String backgroundColor;
+  final String inputBackgroundColor;
   QuantityFieldInfo({
     required this.label,
     required this.optionList,
     required this.showDeleteButton,
     required this.maxValue,
     required this.hint,
+    required this.backgroundColor,
+    required this.inputBackgroundColor,
   });
 
   QuantityFieldInfo copyWith({
@@ -24,6 +28,8 @@ class QuantityFieldInfo {
     bool? showDeleteButton,
     int? maxValue,
     String? hint,
+    String? backgroundColor,
+    String? inputBackgroundColor,
   }) {
     return QuantityFieldInfo(
       label: label ?? this.label,
@@ -31,6 +37,8 @@ class QuantityFieldInfo {
       showDeleteButton: showDeleteButton ?? this.showDeleteButton,
       maxValue: maxValue ?? this.maxValue,
       hint: hint ?? this.hint,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      inputBackgroundColor: inputBackgroundColor ?? this.inputBackgroundColor,
     );
   }
 
@@ -42,6 +50,8 @@ class QuantityFieldInfo {
     result.addAll({'showDeleteButton': showDeleteButton});
     result.addAll({'maxValue': maxValue});
     result.addAll({'hint': hint});
+    result.addAll({'backgroundColor': backgroundColor});
+    result.addAll({'inputBackgroundColor': inputBackgroundColor});
   
     return result;
   }
@@ -53,6 +63,8 @@ class QuantityFieldInfo {
       showDeleteButton: map['showDeleteButton'] ?? false,
       maxValue: map['maxValue']?.toInt() ?? 0,
       hint: map['hint'] ?? '',
+      backgroundColor: map['backgroundColor'] ?? '',
+      inputBackgroundColor: map['inputBackgroundColor'] ?? '',
     );
   }
 
@@ -63,7 +75,7 @@ class QuantityFieldInfo {
 
   @override
   String toString() {
-    return 'QuantityFieldInfo(label: $label, optionList: $optionList, showDeleteButton: $showDeleteButton, maxValue: $maxValue, hint: $hint)';
+    return 'QuantityFieldInfo(label: $label, optionList: $optionList, showDeleteButton: $showDeleteButton, maxValue: $maxValue, hint: $hint, backgroundColor: $backgroundColor, inputBackgroundColor: $inputBackgroundColor)';
   }
 
   @override
@@ -75,7 +87,9 @@ class QuantityFieldInfo {
       listEquals(other.optionList, optionList) &&
       other.showDeleteButton == showDeleteButton &&
       other.maxValue == maxValue &&
-      other.hint == hint;
+      other.hint == hint &&
+      other.backgroundColor == backgroundColor &&
+      other.inputBackgroundColor == inputBackgroundColor;
   }
 
   @override
@@ -84,6 +98,8 @@ class QuantityFieldInfo {
       optionList.hashCode ^
       showDeleteButton.hashCode ^
       maxValue.hashCode ^
-      hint.hashCode;
+      hint.hashCode ^
+      backgroundColor.hashCode ^
+      inputBackgroundColor.hashCode;
   }
 }

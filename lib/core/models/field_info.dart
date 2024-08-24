@@ -44,7 +44,8 @@ class FieldInfo {
 
   String toJson() => json.encode(toMap());
 
-  factory FieldInfo.fromJson(String source) => FieldInfo.fromMap(json.decode(source));
+  factory FieldInfo.fromJson(String source) =>
+      FieldInfo.fromMap(json.decode(source));
 
   @override
   String toString() => 'FieldInfo(label: $label, hint: $hint, optionsList: $optionsList)';

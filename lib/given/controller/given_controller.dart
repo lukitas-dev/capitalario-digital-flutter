@@ -2,6 +2,7 @@ import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_assets.dart';
 import 'package:app/core/infrastructure/app_routes.dart';
 import 'package:app/core/infrastructure/app_state.dart';
+import 'package:app/core/layout/responsive_layout.dart';
 import 'package:app/core/models/field_info.dart';
 import 'package:app/core/models/widget_options.dart';
 import 'package:app/core/ui/alerts.dart';
@@ -26,9 +27,11 @@ class GivenController {
     });
   }
 
-  Widget buildHeader() {
-    if (info.headerImagePath.isNotEmpty) {
+  Widget buildHeader(BuildContext context) {
+    if (info.headerImagePath.isNotEmpty &&
+        ResponsiveLayout.isMobileScreen(context)) {
       return Header(
+          height: 200.0,
           backgroundImage: AssetImage(info.headerImagePath),
           backgroundGradientColor: Colors.transparent);
     }
@@ -36,6 +39,8 @@ class GivenController {
   }
 
   Widget buildDropdownField(BuildContext context, FieldInfo field) {
+    var styleInfo = info.fieldStyleInfo;
+    final screenSize = MediaQuery.of(context).size;
     if (field.label.isNotEmpty) {
       return Column(
         children: [
@@ -45,7 +50,7 @@ class GivenController {
           ),
           _dimens.spaceHeigh8,
           SizedBox(
-              width: 260,
+              width: screenSize.width * 0.8,
               child: DropdownBox(
                   hint: field.hint,
                   itemList: field.optionsList,
@@ -54,12 +59,40 @@ class GivenController {
       );
     } else {
       return SizedBox(
-          width: 260,
+          width: screenSize.width * 0.8,
           child: DropdownBox(
+              arrowColor: _colors.fromHex(styleInfo.arrowColor),
+              backgroundColor: _colors.fromHex(styleInfo.backgroundColor),
+              selectionListBackgroundColor:
+                  _colors.fromHex(styleInfo.selectionBackgroundColor),
               hint: field.hint,
+              hintTextStyle: TextStyle(
+                  color: _colors.fromHex(styleInfo.textColor),
+                  fontSize: styleInfo.textSize,
+                  fontWeight: FontWeight.bold),
               itemList: field.optionsList,
-              onSelect: store.setOffer));
+              onSelect: store.setOffer,
+              selectedTextStyle: TextStyle(
+                  color: _colors.fromHex(styleInfo.textColor),
+                  fontSize: styleInfo.textSize,
+                  fontWeight: FontWeight.bold),
+              itemTextStyle: TextStyle(
+                  color: _colors.fromHex(styleInfo.selectionTextColor),
+                  fontSize: styleInfo.selectionTextSize,
+                  fontWeight: FontWeight.bold)));
     }
+  }
+
+  List<Widget> buildDropdownFieldList(BuildContext context) {
+    if (info.fieldList.isNotEmpty) {
+      List<Widget> widgetList = [];
+      for (final fieldInfo in info.fieldList) {
+        widgetList.add(buildDropdownField(context, fieldInfo));
+        widgetList.add(AppCore.infra.dimens.spaceHeigh24);
+      }
+      return widgetList;
+    }
+    return [Container()];
   }
 
   Widget buildQuantitySelectorField(BuildContext context) {
@@ -74,6 +107,7 @@ class GivenController {
           ),
           _dimens.spaceHeigh16,
           QuantitySelector(
+              backgroundColor: _colors.fromHex(quantityInfo.backgroundColor),
               info: quantityInfo,
               onTimerSelectorCallback: (value) {
                 store.update(value);
@@ -86,6 +120,9 @@ class GivenController {
       );
     } else {
       return QuantitySelector(
+          backgroundColor: _colors.fromHex(quantityInfo.backgroundColor),
+          inputBackgroundColor:
+              _colors.fromHex(quantityInfo.inputBackgroundColor),
           info: quantityInfo,
           onTimerSelectorCallback: (value) {
             store.update(value);
@@ -99,18 +136,19 @@ class GivenController {
 
   Widget buildSendButton(BuildContext context) {
     if (store.enableSendButton) {
+      var styleInfo = info.sendButtonStyle;
       return ButtonBox(
         onTap: () async {
           await store.sendCapital();
         },
         options: WidgetOptions(
-            borderColor: _colors.grey,
-            backgroundColor: _colors.blue,
-            textColor: _colors.white,
+            borderColor: _colors.fromHex(styleInfo.borderColor),
+            backgroundColor: _colors.fromHex(styleInfo.backgroundColor),
+            textColor: _colors.fromHex(styleInfo.textColor),
             width: 240,
-            height: 60,
-            borderRadius: 30,
-            textFontSize: 22),
+            height: styleInfo.height,
+            borderRadius: styleInfo.borderRadius,
+            textFontSize: styleInfo.textFontSize),
         text: info.sendTitleButton,
       );
     } else {

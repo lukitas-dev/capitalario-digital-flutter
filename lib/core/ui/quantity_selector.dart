@@ -11,6 +11,7 @@ class QuantitySelector extends StatelessWidget {
   final VoidCallback onClearCallback;
   final TextEditingController quantity;
   final Color? backgroundColor;
+  final Color? inputBackgroundColor;
   final Color? iconsTintColor;
   final Color? textColor;
   final Color? inputColor;
@@ -21,6 +22,7 @@ class QuantitySelector extends StatelessWidget {
     required this.onClearCallback,
     required this.quantity,
     this.backgroundColor,
+    this.inputBackgroundColor,
     this.iconsTintColor,
     this.textColor,
     this.inputColor,
@@ -70,13 +72,14 @@ class QuantitySelector extends StatelessWidget {
             enabled: false,
             decoration: InputDecoration(
               filled: true,
-              fillColor: Colors.white,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(40.0),
-              ),
+              fillColor: inputBackgroundColor ?? Colors.white,
+              disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(40.0),
+                  borderSide:
+                      BorderSide(color: inputBackgroundColor ?? Colors.white)),
               hintText: info.hint,
-              hintStyle: const TextStyle(
-                color: Colors.grey,
+              hintStyle: TextStyle(
+                color: inputColor ?? Colors.black,
                 fontSize: 20,
               ),
             ),

@@ -24,7 +24,7 @@ class Footer extends StatelessWidget {
         children: [
           Container(
             height: height * 0.6,
-            color: AppCore.infra.colors.yellow,
+            color: backgroundColor ?? AppCore.infra.colors.yellow,
             child: Center(
               child: Text(
                 "@jufembrasil",

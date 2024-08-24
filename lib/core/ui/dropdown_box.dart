@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 typedef OnDropdownSelectionCallback = void Function(String selection);
 
 class DropdownBox extends StatelessWidget {
+  final Color arrowColor;
+  final Color backgroundColor;
+  final Color selectionListBackgroundColor;
   final String hint;
   final TextStyle? hintTextStyle;
   final List<String> itemList;
@@ -11,42 +14,54 @@ class DropdownBox extends StatelessWidget {
   final OnDropdownSelectionCallback onSelect;
   final TextStyle selectedTextStyle;
 
-  const DropdownBox({
-    Key? key,
-    required this.hint,
-    this.hintTextStyle = const TextStyle(
-      fontSize: 18,
-      color: Colors.black,
-    ),
-    required this.itemList,
-    this.itemTextStyle = const TextStyle(
-      fontSize: 18,
-      color: Colors.black,
-    ),
-    required this.onSelect, 
-    this.selectedTextStyle = const TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.bold,
-      color: Colors.black,
-    )
-  }) : super(key: key);
+  const DropdownBox(
+      {Key? key,
+      this.arrowColor = Colors.black,
+      this.backgroundColor = Colors.white,
+      this.selectionListBackgroundColor = Colors.white,
+      required this.hint,
+      this.hintTextStyle = const TextStyle(
+        fontSize: 18,
+        color: Colors.black,
+      ),
+      required this.itemList,
+      this.itemTextStyle = const TextStyle(
+        fontSize: 18,
+        color: Colors.black,
+      ),
+      required this.onSelect,
+      this.selectedTextStyle = const TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        color: Colors.black,
+      )})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField2<String>(
       isExpanded: true,
+      alignment: Alignment.center,
       decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        contentPadding: const EdgeInsets.symmetric(vertical: 16),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-      ),
-      hint: Text(
-        hint,
-        style: hintTextStyle,
-      ),
+          filled: true,
+          fillColor: backgroundColor,
+          alignLabelWithHint: true,
+          contentPadding: const EdgeInsets.symmetric(vertical: 16),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: BorderSide(color: backgroundColor)),
+          disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: BorderSide(color: backgroundColor)),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30),
+              borderSide: BorderSide(color: backgroundColor))),
+      hint: Align(
+          alignment: Alignment.center,
+          child: Text(
+            hint,
+            style: hintTextStyle,
+          )),
       items: itemList
           .map((item) => DropdownMenuItem<String>(
                 value: item,
@@ -76,15 +91,16 @@ class DropdownBox extends StatelessWidget {
       buttonStyleData: const ButtonStyleData(
         padding: EdgeInsets.only(right: 8),
       ),
-      iconStyleData: const IconStyleData(
+      iconStyleData: IconStyleData(
         icon: Icon(
-          Icons.arrow_drop_down,
-          color: Colors.black,
+          Icons.keyboard_arrow_down,
+          color: arrowColor,
         ),
         iconSize: 24,
       ),
       dropdownStyleData: DropdownStyleData(
         decoration: BoxDecoration(
+          color: selectionListBackgroundColor,
           borderRadius: BorderRadius.circular(15),
         ),
       ),

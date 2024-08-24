@@ -19,7 +19,9 @@ class AppLayout extends StatelessWidget {
   final Widget? header;
   final Widget body;
   final EdgeInsets mobileBodyPadding;
-   final String? mobileBackgroundImage;
+  final String? mobileBackgroundImage;
+  final Color? footerBackgroundColor;
+  final Color? footerTextColor;
   AppLayout({
     Key? key,
     this.pageTitle,
@@ -29,6 +31,8 @@ class AppLayout extends StatelessWidget {
     required this.body,
     this.mobileBodyPadding = const EdgeInsets.only(left: 26, right: 26),
     this.mobileBackgroundImage,
+    this.footerBackgroundColor,
+    this.footerTextColor,
   }) : super(key: key);
 
   final _settings = AppCore.getSettings();
@@ -69,8 +73,7 @@ class AppLayout extends StatelessWidget {
           appBar: Toolbar(
             hasBack: hasBack,
             onBackCallback: onBackCallback,
-            title:
-                pageTitle != null ? pageTitle! : _settings.name,
+            title: pageTitle != null ? pageTitle! : _settings.name,
             titleStyle: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -78,27 +81,34 @@ class AppLayout extends StatelessWidget {
             onBackColor: colors.fromHex(_settings.toolbarTextColor),
             backgroundColor: colors.fromHex(_settings.toolbarBackgroundColor),
           ),
-          drawer: _settings.isSideMenuEnabled ? SideMenu(
-            header: _settings.sideMenuInfo.showLogo ? SizedBox(
-                width: screenSize.width,
-                height: 250,
-                child: Center(
-                  child: Image.asset(
-                    AppAssets.logoMenu.path,
-                    width: 250,
-                    fit: BoxFit.fill,
-                  ),
-                )) : Container(),
-            menuItens: menuItens,
-            backgroundColor: colors.fromHex(_settings.sideMenuInfo.backgroundColor),
-            textColor: colors.fromHex(_settings.sideMenuInfo.textColor),
-            homeTitle: _settings.sideMenuInfo.homeTitle,
-          ) : Container(),
+          drawer: _settings.isSideMenuEnabled
+              ? SideMenu(
+                  header: _settings.sideMenuInfo.showLogo
+                      ? SizedBox(
+                          width: screenSize.width,
+                          height: 250,
+                          child: Center(
+                            child: Image.asset(
+                              AppAssets.logoMenu.path,
+                              width: 250,
+                              fit: BoxFit.fill,
+                            ),
+                          ))
+                      : Container(),
+                  menuItens: menuItens,
+                  backgroundColor:
+                      colors.fromHex(_settings.sideMenuInfo.backgroundColor),
+                  textColor: colors.fromHex(_settings.sideMenuInfo.textColor),
+                  homeTitle: _settings.sideMenuInfo.homeTitle,
+                )
+              : Container(),
           header: header ?? Container(),
           body: body,
           bodyPadding: mobileBodyPadding,
-          footer: const Footer(
+          footer: Footer(
             isMobile: true,
+            backgroundColor: footerBackgroundColor,
+            textColor: footerTextColor,
           ),
         ));
   }
