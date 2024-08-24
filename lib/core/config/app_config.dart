@@ -4,6 +4,7 @@ import 'package:app/given/constants/given_constants.dart';
 import 'package:app/home/constants/home_constants.dart';
 import 'package:app/light/constants/light_constants.dart';
 import 'package:app/pray/constants/pray_constants.dart';
+import 'package:app/ranking/constants/ranking_constants.dart';
 import 'package:app/viewer/constants/viewer_constants.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
@@ -30,6 +31,7 @@ class AppConfig {
     defaultValues[_constants.prayInfo] = PrayConstants.infoDefaults;
     defaultValues[_constants.givenInfo] = GivenConstants.infoDefaults;
     defaultValues[_constants.viewerInfo] = ViewerConstants.infoDefaults;
+    defaultValues[_constants.rankingInfo] = RankingConstants.infoDefaults;
     defaultValues[_constants.settingsInfo] = _constants.settingsDefaults;
     return defaultValues;
   }

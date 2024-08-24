@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -22,5 +24,11 @@ class AppUtils {
     final DateFormat formatter = DateFormat('yyyyMMdd');
     return formatter.format(now);
   }
-  
+
+  static String getDocIdFromString(String value) {
+    log("tranform $value in unique Id");
+    var id = "DocumentID" + value.hashCode.toString();
+    log("genereted id -> $id");
+    return id;
+  }
 }

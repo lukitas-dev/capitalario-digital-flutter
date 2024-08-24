@@ -18,6 +18,7 @@ class ConfigConstants {
   String get prayInfo => "prayInfoJufemENJ24";
   String get givenInfo => "givenInfoJufemENJ24";
   String get viewerInfo => "viewerInfoJufemENJ24";
+  String get rankingInfo => "rankingInfoJufemENJ24";
 
   //settings
   String get settingsInfo => "settingsInfoENJ24";
@@ -64,6 +65,7 @@ class MenuConstants {
 class CollectionConstants {
   String get main => "CapitalarioDigitalJufemENJ24";
   String get given => "GivenCapitalJufemENJ24";
+  String get ranking => "RankingJufemENJ24";
 }
 
 class DocumentConstants {
@@ -73,4 +75,5 @@ class DocumentConstants {
 class FieldConstants {
   String get numberOfCapitalOfGrace => "numberOfCapitalOfGrace";
   String get numberOfSendedCapitalOfGrace => "numberOfSendedCapitalOfGrace";
+  String get quantity => "quantity";
 }

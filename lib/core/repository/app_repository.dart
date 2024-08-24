@@ -1,5 +1,6 @@
 import 'package:app/core/repository/given_repository.dart';
 import 'package:app/core/repository/main_repository.dart';
+import 'package:app/core/repository/ranking_repository.dart';
 
 typedef OnSuccessCallback = Function(String id);
 typedef OnErrorCallback = Function();
@@ -10,4 +11,5 @@ typedef OnQuantityCallback = Function(int quantity);
 class AppRepository {
   static MainRepository get main => MainRepository();
   static GivenRepository get given => GivenRepository();
+  static RankingRepository get ranking => RankingRepository();
 }

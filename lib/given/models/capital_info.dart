@@ -4,11 +4,13 @@ class CapitalInfo {
   String timestamp;
   final int quantity;
   final String offer;
+  final String region;
 
   CapitalInfo({
     required this.timestamp,
     required this.quantity,
     required this.offer,
+    required this.region,
   });
 
   bool get isValid => quantity > 0 && quantity < 31;
@@ -19,6 +21,7 @@ class CapitalInfo {
     result.addAll({'timestamp': timestamp});
     result.addAll({'quantity': quantity});
     result.addAll({'offer': offer});
+    result.addAll({'region': region});
   
     return result;
   }
@@ -28,6 +31,7 @@ class CapitalInfo {
       timestamp: map['timestamp'] ?? '',
       quantity: map['quantity']?.toInt() ?? 0,
       offer: map['offer'] ?? '',
+      region: map['region'] ?? '',
     );
   }
 
@@ -37,17 +41,21 @@ class CapitalInfo {
       CapitalInfo.fromMap(json.decode(source));
 
   @override
-  String toString() => 'CapitalInfo(timestamp: $timestamp, quantity: $quantity, offer: $offer)';
+  String toString() {
+    return 'CapitalInfo(timestamp: $timestamp, quantity: $quantity, offer: $offer, region: $region)';
+  }
 
   CapitalInfo copyWith({
     String? timestamp,
     int? quantity,
     String? offer,
+    String? region,
   }) {
     return CapitalInfo(
       timestamp: timestamp ?? this.timestamp,
       quantity: quantity ?? this.quantity,
       offer: offer ?? this.offer,
+      region: region ?? this.region,
     );
   }
 
@@ -58,9 +66,15 @@ class CapitalInfo {
     return other is CapitalInfo &&
       other.timestamp == timestamp &&
       other.quantity == quantity &&
-      other.offer == offer;
+      other.offer == offer &&
+      other.region == region;
   }
 
   @override
-  int get hashCode => timestamp.hashCode ^ quantity.hashCode ^ offer.hashCode;
+  int get hashCode {
+    return timestamp.hashCode ^
+      quantity.hashCode ^
+      offer.hashCode ^
+      region.hashCode;
+  }
 }

@@ -64,8 +64,10 @@ class _GivenPageState extends State<GivenPage> {
     List<Widget> widgetList = [];
     widgetList.add(_controller.buildHeader(context));
     widgetList.add(_dimens.spaceHeigh24);
-    widgetList.addAll(_controller.buildDropdownFieldList(context));
-    widgetList.add(_dimens.spaceHeigh16);
+    widgetList.add(_controller.buildRegion(context));
+    widgetList.add(_dimens.spaceHeigh24);
+    widgetList.add(_controller.buildOffer(context));
+    widgetList.add(_dimens.spaceHeigh32);
     widgetList.add(_controller.buildQuantitySelectorField(context));
     widgetList.add(_dimens.spaceHeigh16);
     widgetList.add(_controller.buildSendButton(context));

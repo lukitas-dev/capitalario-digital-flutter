@@ -1,14 +1,14 @@
+import 'dart:developer';
+
 import 'package:app/core/infrastructure/app_screen.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 class AppAnalytics {
   trackScreen(AppScreen screen) async {
-    await FirebaseAnalytics.instance.logEvent(
-      name: 'screen_view',
-      parameters: {
-        'firebase_screen': screen.screenName,
-        'firebase_screen_class': screen.className,
-      },
+    log("Track screen -> ${screen.screenName} on ${screen.className}");
+    await FirebaseAnalytics.instance.logScreenView(
+      screenClass: screen.className,
+      screenName: screen.screenName,
     );
   }
 }

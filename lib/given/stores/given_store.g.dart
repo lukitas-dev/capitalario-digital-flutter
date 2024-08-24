@@ -72,6 +72,22 @@ mixin _$GivenStore on _GivenStoreBase, Store {
     });
   }
 
+  late final _$regionAtom =
+      Atom(name: '_GivenStoreBase.region', context: context);
+
+  @override
+  String get region {
+    _$regionAtom.reportRead();
+    return super.region;
+  }
+
+  @override
+  set region(String value) {
+    _$regionAtom.reportWrite(value, super.region, () {
+      super.region = value;
+    });
+  }
+
   late final _$capitalQuantityAtom =
       Atom(name: '_GivenStoreBase.capitalQuantity', context: context);
 
@@ -141,11 +157,23 @@ mixin _$GivenStore on _GivenStoreBase, Store {
   }
 
   @override
+  dynamic setRegion(String value) {
+    final _$actionInfo = _$_GivenStoreBaseActionController.startAction(
+        name: '_GivenStoreBase.setRegion');
+    try {
+      return super.setRegion(value);
+    } finally {
+      _$_GivenStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 state: ${state},
 quantity: ${quantity},
 offer: ${offer},
+region: ${region},
 capitalQuantity: ${capitalQuantity},
 showAlert: ${showAlert},
 capital: ${capital},

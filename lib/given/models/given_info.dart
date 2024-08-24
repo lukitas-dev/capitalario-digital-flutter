@@ -11,7 +11,8 @@ import 'package:app/core/models/quantity_field_info.dart';
 class GivenInfo {
   final String toolbarTitle;
   final String headerImagePath;
-  final List<FieldInfo> fieldList;
+  final FieldInfo regionField;
+  final FieldInfo offerField;
   final FieldStyleInfo fieldStyleInfo;
   final QuantityFieldInfo quantityField;
   final String sendTitleButton;
@@ -20,7 +21,8 @@ class GivenInfo {
   GivenInfo({
     required this.toolbarTitle,
     required this.headerImagePath,
-    required this.fieldList,
+    required this.regionField,
+    required this.offerField,
     required this.fieldStyleInfo,
     required this.quantityField,
     required this.sendTitleButton,
@@ -31,7 +33,8 @@ class GivenInfo {
   GivenInfo copyWith({
     String? toolbarTitle,
     String? headerImagePath,
-    List<FieldInfo>? fieldList,
+    FieldInfo? regionField,
+    FieldInfo? offerField,
     FieldStyleInfo? fieldStyleInfo,
     QuantityFieldInfo? quantityField,
     String? sendTitleButton,
@@ -41,7 +44,8 @@ class GivenInfo {
     return GivenInfo(
       toolbarTitle: toolbarTitle ?? this.toolbarTitle,
       headerImagePath: headerImagePath ?? this.headerImagePath,
-      fieldList: fieldList ?? this.fieldList,
+      regionField: regionField ?? this.regionField,
+      offerField: offerField ?? this.offerField,
       fieldStyleInfo: fieldStyleInfo ?? this.fieldStyleInfo,
       quantityField: quantityField ?? this.quantityField,
       sendTitleButton: sendTitleButton ?? this.sendTitleButton,
@@ -55,7 +59,8 @@ class GivenInfo {
   
     result.addAll({'toolbarTitle': toolbarTitle});
     result.addAll({'headerImagePath': headerImagePath});
-    result.addAll({'fieldList': fieldList.map((x) => x.toMap()).toList()});
+    result.addAll({'regionField': regionField.toMap()});
+    result.addAll({'offerField': offerField.toMap()});
     result.addAll({'fieldStyleInfo': fieldStyleInfo.toMap()});
     result.addAll({'quantityField': quantityField.toMap()});
     result.addAll({'sendTitleButton': sendTitleButton});
@@ -69,7 +74,8 @@ class GivenInfo {
     return GivenInfo(
       toolbarTitle: map['toolbarTitle'] ?? '',
       headerImagePath: map['headerImagePath'] ?? '',
-      fieldList: List<FieldInfo>.from(map['fieldList']?.map((x) => FieldInfo.fromMap(x))),
+      regionField: FieldInfo.fromMap(map['regionField']),
+      offerField: FieldInfo.fromMap(map['offerField']),
       fieldStyleInfo: FieldStyleInfo.fromMap(map['fieldStyleInfo']),
       quantityField: QuantityFieldInfo.fromMap(map['quantityField']),
       sendTitleButton: map['sendTitleButton'] ?? '',
@@ -85,7 +91,7 @@ class GivenInfo {
 
   @override
   String toString() {
-    return 'GivenInfo(toolbarTitle: $toolbarTitle, headerImagePath: $headerImagePath, fieldList: $fieldList, fieldStyleInfo: $fieldStyleInfo, quantityField: $quantityField, sendTitleButton: $sendTitleButton, sendButtonStyle: $sendButtonStyle, sendAlert: $sendAlert)';
+    return 'GivenInfo(toolbarTitle: $toolbarTitle, headerImagePath: $headerImagePath, regionField: $regionField, offerField: $offerField, fieldStyleInfo: $fieldStyleInfo, quantityField: $quantityField, sendTitleButton: $sendTitleButton, sendButtonStyle: $sendButtonStyle, sendAlert: $sendAlert)';
   }
 
   @override
@@ -95,7 +101,8 @@ class GivenInfo {
     return other is GivenInfo &&
       other.toolbarTitle == toolbarTitle &&
       other.headerImagePath == headerImagePath &&
-      listEquals(other.fieldList, fieldList) &&
+      other.regionField == regionField &&
+      other.offerField == offerField &&
       other.fieldStyleInfo == fieldStyleInfo &&
       other.quantityField == quantityField &&
       other.sendTitleButton == sendTitleButton &&
@@ -107,7 +114,8 @@ class GivenInfo {
   int get hashCode {
     return toolbarTitle.hashCode ^
       headerImagePath.hashCode ^
-      fieldList.hashCode ^
+      regionField.hashCode ^
+      offerField.hashCode ^
       fieldStyleInfo.hashCode ^
       quantityField.hashCode ^
       sendTitleButton.hashCode ^

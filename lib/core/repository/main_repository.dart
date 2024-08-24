@@ -12,16 +12,16 @@ class MainRepository {
     await _database.getDocument(
         _constants.collections.main, _constants.documents.status, (obj) async {
       if (obj == null) {
-        create(quantity);
+        createStatus(quantity);
       } else {
         var status = StatusInfo.fromMap(obj);
         var quantityUpdated = status.numberOfCapitalOfGrace + quantity;
-        update(status, quantityUpdated);
+        updateStatus(status, quantityUpdated);
       }
     }, () {});
   }
 
-  create([int quantity = 0]) {
+  createStatus([int quantity = 0]) {
     var viewerInfo =
         ViewerInfo.fromJson(_config.getString(_constants.config.viewerInfo));
     var capitalOfGraceTarget = viewerInfo.gridInfo.numberOfColumns *
@@ -39,7 +39,7 @@ class MainRepository {
     });
   }
 
-  update(StatusInfo status, int quantity) {
+  updateStatus(StatusInfo status, int quantity) {
     var statusMap = status.toMap();
     statusMap[_constants.fields.numberOfCapitalOfGrace] = quantity;
     statusMap[_constants.fields.numberOfSendedCapitalOfGrace] = status.numberOfSendedCapitalOfGrace + 1;
@@ -56,7 +56,7 @@ class MainRepository {
     await _database.getDocument(
         _constants.collections.main, _constants.documents.status, (obj) async {
       if (obj == null) {
-        create();
+        createStatus();
       } else {
         var status = StatusInfo.fromMap(obj);
         callback(status.numberOfCapitalOfGrace);

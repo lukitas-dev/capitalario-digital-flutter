@@ -13,26 +13,27 @@ class GivenConstants {
   static String get infoDefaults => GivenInfo(
           toolbarTitle: "Entrega",
           headerImagePath: AppAssets.givenHeaderMob.path,
-          fieldList: [
-            FieldInfo(
-                label: "",
-                hint: "Selecione o seu regional",
-                optionsList: [
-                  "Sul (Tabor)",
-                  "Paraná (Missiones)",
-                  "Sudeste (Coração Tabor)",
-                  "Nordeste (Sol do Tabor)"
-                ]),
-            FieldInfo(label: "", hint: "Selecione o sua entrega", optionsList: [
-              "Propósito Jufem a caminho",
-              "Leitura do “Dá-nos Luz”",
-              "CG 20h 24",
-              "Terço",
-              "Missa",
-              "Dificuldades",
-              "Outros"
-            ])
-          ],
+          regionField: FieldInfo(
+              label: "",
+              hint: "Selecione o seu regional",
+              optionsList: [
+                "Sul (Tabor)",
+                "Paraná (Missiones)",
+                "Sudeste (Coração Tabor)",
+                "Nordeste (Sol do Tabor)"
+              ]),
+          offerField: FieldInfo(
+              label: "",
+              hint: "Selecione o sua entrega",
+              optionsList: [
+                "Propósito Jufem a caminho",
+                "Leitura do “Dá-nos Luz”",
+                "CG 20h 24",
+                "Terço",
+                "Missa",
+                "Dificuldades",
+                "Outros"
+              ]),
           fieldStyleInfo: FieldStyleInfo(
               arrowColor: "#FFFFFF",
               backgroundColor: "#910909",
@@ -60,7 +61,7 @@ class GivenConstants {
           sendAlert: AlertInfo(
               title: "Entrega realizada",
               description:
-                  "Seus capitais foram adicionados ao capitaário com sucesso.",
+                  "Seus capitais foram adicionados ao capitalário com sucesso.",
               button: "OK"))
       .toJson();
 }
