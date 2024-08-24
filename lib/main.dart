@@ -1,3 +1,5 @@
+import 'package:app/challenge/views/challenge_detail_page.dart';
+import 'package:app/challenge/views/challenge_page.dart';
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_routes.dart';
 import 'package:app/given/views/given_page.dart';
@@ -35,7 +37,8 @@ class AppModule extends Module {
   void routes(r) {
     r.child(AppRoutes.home.path, child: (context) => const HomePage(), transition: TransitionType.fadeIn);
     r.child(AppRoutes.givenUsLight.path, child: (context) => const LightPage(), transition: TransitionType.fadeIn);
-    r.child(AppRoutes.challenges.path, child: (context) => const LightPage(), transition: TransitionType.fadeIn);
+    r.child(AppRoutes.challenges.path, child: (context) => const ChallengePage(), transition: TransitionType.fadeIn);
+    r.child(AppRoutes.challengesDetails.path, child: (context) => const ChallengeDetailPage(), transition: TransitionType.fadeIn);
     r.child(AppRoutes.pray.path, child: (context) => const PrayPage(), transition: TransitionType.fadeIn);
     r.child(AppRoutes.given.path, child: (context) => const GivenPage(), transition: TransitionType.fadeIn);
     r.child(AppRoutes.viewer.path, child: (context) => const ViewerPage(), transition: TransitionType.fadeIn);

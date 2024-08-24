@@ -1,3 +1,4 @@
+import 'package:app/challenge/constants/challenge_constants.dart';
 import 'package:app/core/core.dart';
 import 'package:app/given/constants/given_constants.dart';
 import 'package:app/home/constants/home_constants.dart';
@@ -25,6 +26,7 @@ class AppConfig {
     var defaultValues = <String, dynamic>{};
     defaultValues[_constants.homeInfo] = HomeConstants.infoDefaults;
     defaultValues[_constants.lightInfo] = LightConstants.infoDefaults;
+    defaultValues[_constants.challengeInfo] = ChallengeConstants.infoDefaults;
     defaultValues[_constants.prayInfo] = PrayConstants.infoDefaults;
     defaultValues[_constants.givenInfo] = GivenConstants.infoDefaults;
     defaultValues[_constants.viewerInfo] = ViewerConstants.infoDefaults;
