@@ -11,11 +11,11 @@ class HomeConstants {
           subtitle: "vamos contigo Pai!",
           textColor: "#FFFFFF",
           buttonList: [
-            ButtonInfo(title: "Acessar “Dá-nos Luz”", routePath: "/test"),
-            ButtonInfo(title: "Visualizar Desafios", routePath: "/test"),
-            ButtonInfo(title: "Entrega do Capital de Graça", routePath: "/test"),
-            ButtonInfo(title: "Visualizar Capitalário", routePath: "/test"),
-            ButtonInfo(title: "Visualizar Ranking", routePath: "/test"),
+            ButtonInfo(title: "Acessar “Dá-nos Luz”", routePath: "/givenUsLight"),
+            ButtonInfo(title: "Visualizar Desafios", routePath: "/challenges"),
+            ButtonInfo(title: "Entrega do Capital de Graça", routePath: "/given"),
+            ButtonInfo(title: "Visualizar Capitalário", routePath: "/viewer"),
+            ButtonInfo(title: "Visualizar Ranking", routePath: "/ranking"),
           ],
           buttonStyle: ButtonStyleInfo(
               textColor: "#FFFFFF",

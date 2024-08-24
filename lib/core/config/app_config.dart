@@ -1,6 +1,7 @@
 import 'package:app/core/core.dart';
 import 'package:app/given/constants/given_constants.dart';
 import 'package:app/home/constants/home_constants.dart';
+import 'package:app/light/constants/light_constants.dart';
 import 'package:app/pray/constants/pray_constants.dart';
 import 'package:app/viewer/constants/viewer_constants.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -23,6 +24,7 @@ class AppConfig {
   Map<String, dynamic> prepareDefaultValues() {
     var defaultValues = <String, dynamic>{};
     defaultValues[_constants.homeInfo] = HomeConstants.infoDefaults;
+    defaultValues[_constants.lightInfo] = LightConstants.infoDefaults;
     defaultValues[_constants.prayInfo] = PrayConstants.infoDefaults;
     defaultValues[_constants.givenInfo] = GivenConstants.infoDefaults;
     defaultValues[_constants.viewerInfo] = ViewerConstants.infoDefaults;

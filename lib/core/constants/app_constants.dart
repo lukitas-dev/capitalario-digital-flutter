@@ -13,6 +13,7 @@ class AppConstants {
 
 class ConfigConstants {
   String get homeInfo => "homeInfoJufemENJ24";
+  String get lightInfo => "lightInfoJufemENJ24";
   String get prayInfo => "prayInfoJufemENJ24";
   String get givenInfo => "givenInfoJufemENJ24";
   String get viewerInfo => "viewerInfoJufemENJ24";

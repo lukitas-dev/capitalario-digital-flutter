@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_colors.dart';
 import 'package:app/core/infrastructure/app_state.dart';
@@ -61,7 +63,7 @@ class HomeController {
       List<Widget> widgetList = [];
       for (final buttonInfo in info.buttonList) {
         widgetList.add(ButtonBox(
-          onTap: () => Modular.to.navigate(buttonInfo.routePath),
+          onTap: () => _openRoute(buttonInfo.routePath),
           options: WidgetOptions(
               borderColor:
                   AppCore.infra.colors.fromHex(info.buttonStyle.borderColor),
@@ -79,6 +81,11 @@ class HomeController {
       return widgetList;
     }
     return [Container()];
+  }
+
+  _openRoute(String route) {
+    log("open route -> $route");
+    Modular.to.navigate(route);
   }
 
   String getBackgroundImage() {

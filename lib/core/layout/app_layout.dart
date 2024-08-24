@@ -70,7 +70,7 @@ class AppLayout extends StatelessWidget {
             hasBack: hasBack,
             onBackCallback: onBackCallback,
             title:
-                pageTitle != null ? pageTitle!.toUpperCase() : _settings.name,
+                pageTitle != null ? pageTitle! : _settings.name,
             titleStyle: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
