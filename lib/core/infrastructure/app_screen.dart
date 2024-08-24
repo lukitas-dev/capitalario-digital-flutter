@@ -5,7 +5,8 @@ enum AppScreen {
   challengesDetails(className: 'ChallengesDetailsClass', screenName: 'ChallengesDetailsScreen'),
   pray(className: 'PrayClass', screenName: 'PrayScreen'),
   given(className: 'GivenClass', screenName: 'GivenScreen'),
-  viewer(className: 'ViewerClass', screenName: 'ViewerScreen');
+  viewer(className: 'ViewerClass', screenName: 'ViewerScreen'),
+  ranking(className: 'RankingClass', screenName: 'RankingScreen');
 
   const AppScreen({required this.className, required this.screenName});
 

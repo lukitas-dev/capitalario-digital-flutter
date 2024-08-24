@@ -28,7 +28,7 @@ class _ViewerPageState extends State<ViewerPage> {
     AppCore.analytics.trackScreen(AppScreen.viewer);
     return AppLayout(
       pageTitle: _controller.getTitle(),
-      mobileBodyPadding: const EdgeInsets.all(24),
+      mobileBodyPadding: const EdgeInsets.all(32),
       body: Observer(
       builder: (_) {
         switch (_controller.getState()) {

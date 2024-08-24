@@ -6,6 +6,7 @@ import 'package:app/given/views/given_page.dart';
 import 'package:app/home/views/home_page.dart';
 import 'package:app/light/views/light_page.dart';
 import 'package:app/pray/views/pray_page.dart';
+import 'package:app/ranking/views/ranking_page.dart';
 import 'package:app/viewer/views/viewer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -42,6 +43,6 @@ class AppModule extends Module {
     r.child(AppRoutes.pray.path, child: (context) => const PrayPage(), transition: TransitionType.fadeIn);
     r.child(AppRoutes.given.path, child: (context) => const GivenPage(), transition: TransitionType.fadeIn);
     r.child(AppRoutes.viewer.path, child: (context) => const ViewerPage(), transition: TransitionType.fadeIn);
-    r.child(AppRoutes.ranking.path, child: (context) => const LightPage(), transition: TransitionType.fadeIn);
+    r.child(AppRoutes.ranking.path, child: (context) => const RankingPage(), transition: TransitionType.fadeIn);
   }
 }
