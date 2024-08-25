@@ -2,9 +2,7 @@ import 'dart:developer';
 
 import 'package:app/core/core.dart';
 import 'package:app/core/repository/app_repository.dart';
-import 'package:app/core/utils/app_utils.dart';
 import 'package:app/ranking/models/ranking_info.dart';
-import 'package:app/ranking/models/ranking_item_info.dart';
 
 class RankingRepository {
   final _config = AppCore.config;
@@ -16,26 +14,23 @@ class RankingRepository {
     log("start ranking creation");
     var rankingInfo =
         RankingInfo.fromJson(_config.getString(_constants.config.rankingInfo));
-    for (var i = 0; i < rankingInfo.idItemList.length; i++) {
-      var itemInfo =
-          RankingItemInfo(name: rankingInfo.labelItemList[i], quantity: 0);
-      var docId = AppUtils.getDocIdFromString(rankingInfo.idItemList[i]);
-      await _database.addDocumentWithId(
-          _collection, docId, itemInfo.toMap(), (result) {
-        log("add ${rankingInfo.labelItemList[i]} on ranking");
+    for (var item in rankingInfo.itemList) {
+      await _database.addDocumentWithId(_collection, item.id, item.toMap(),
+          (result) {
+        log("add ${item.label} on ranking");
       }, () {});
     }
     success("ranking created");
   }
 
-  updateRanking(String id, int quantity) async {
-    var docId = AppUtils.getDocIdFromString(id);
+  updateRanking(String description, int quantity) async {
+    var docId = _getDocIdFromDescription(description);
     await _database.updateDocumentOnlyField(_collection, docId,
         _constants.fields.quantity, quantity, (success) {}, () {});
   }
 
-  getRankingItem(String id, OnGetDocCallback success) async {
-    var docId = AppUtils.getDocIdFromString(id);
+  getRankingItem(String description, OnGetDocCallback success) async {
+    var docId = _getDocIdFromDescription(description);
     await _database.getDocument(_collection, docId, (obj) async {
       if (obj == null) {
         createRanking((result) {
@@ -49,5 +44,16 @@ class RankingRepository {
 
   getRankingList(OnGetAllCallback success) async {
     await _database.getAllDocuments(_collection, success, () {});
+  }
+
+  String _getDocIdFromDescription(String description) {
+    var rankingInfo =
+        RankingInfo.fromJson(_config.getString(_constants.config.rankingInfo));
+    for (var item in rankingInfo.itemList) {
+      if (item.description == description) {
+        return item.id;
+      }
+    }
+    return "ID000";
   }
 }

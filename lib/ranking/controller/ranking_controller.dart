@@ -50,7 +50,7 @@ class RankingController {
               fontWeight: FontWeight.bold),
         ),
         title: Text(
-          item.name,
+          item.label,
           style: TextStyle(
               color: _colors.fromHex(info.textColor),
               fontSize: 24,

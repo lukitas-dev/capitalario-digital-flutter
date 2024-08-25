@@ -2,31 +2,29 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:app/ranking/models/ranking_item_info.dart';
+
 class RankingInfo {
   final String toolbarTitle;
-  final List<String> idItemList;
-  final List<String> labelItemList;
+  final List<RankingItemInfo> itemList;
   final String textColor;
   final bool hasDivider;
   RankingInfo({
     required this.toolbarTitle,
-    required this.idItemList,
-    required this.labelItemList,
+    required this.itemList,
     required this.textColor,
     required this.hasDivider,
   });
 
   RankingInfo copyWith({
     String? toolbarTitle,
-    List<String>? idItemList,
-    List<String>? labelItemList,
+    List<RankingItemInfo>? itemList,
     String? textColor,
     bool? hasDivider,
   }) {
     return RankingInfo(
       toolbarTitle: toolbarTitle ?? this.toolbarTitle,
-      idItemList: idItemList ?? this.idItemList,
-      labelItemList: labelItemList ?? this.labelItemList,
+      itemList: itemList ?? this.itemList,
       textColor: textColor ?? this.textColor,
       hasDivider: hasDivider ?? this.hasDivider,
     );
@@ -36,8 +34,7 @@ class RankingInfo {
     final result = <String, dynamic>{};
   
     result.addAll({'toolbarTitle': toolbarTitle});
-    result.addAll({'idItemList': idItemList});
-    result.addAll({'labelItemList': labelItemList});
+    result.addAll({'itemList': itemList.map((x) => x.toMap()).toList()});
     result.addAll({'textColor': textColor});
     result.addAll({'hasDivider': hasDivider});
   
@@ -47,8 +44,7 @@ class RankingInfo {
   factory RankingInfo.fromMap(Map<String, dynamic> map) {
     return RankingInfo(
       toolbarTitle: map['toolbarTitle'] ?? '',
-      idItemList: List<String>.from(map['idItemList']),
-      labelItemList: List<String>.from(map['labelItemList']),
+      itemList: List<RankingItemInfo>.from(map['itemList']?.map((x) => RankingItemInfo.fromMap(x))),
       textColor: map['textColor'] ?? '',
       hasDivider: map['hasDivider'] ?? false,
     );
@@ -60,7 +56,7 @@ class RankingInfo {
 
   @override
   String toString() {
-    return 'RankingInfo(toolbarTitle: $toolbarTitle, idItemList: $idItemList, labelItemList: $labelItemList, textColor: $textColor, hasDivider: $hasDivider)';
+    return 'RankingInfo(toolbarTitle: $toolbarTitle, itemList: $itemList, textColor: $textColor, hasDivider: $hasDivider)';
   }
 
   @override
@@ -69,8 +65,7 @@ class RankingInfo {
   
     return other is RankingInfo &&
       other.toolbarTitle == toolbarTitle &&
-      listEquals(other.idItemList, idItemList) &&
-      listEquals(other.labelItemList, labelItemList) &&
+      listEquals(other.itemList, itemList) &&
       other.textColor == textColor &&
       other.hasDivider == hasDivider;
   }
@@ -78,8 +73,7 @@ class RankingInfo {
   @override
   int get hashCode {
     return toolbarTitle.hashCode ^
-      idItemList.hashCode ^
-      labelItemList.hashCode ^
+      itemList.hashCode ^
       textColor.hashCode ^
       hasDivider.hashCode;
   }
