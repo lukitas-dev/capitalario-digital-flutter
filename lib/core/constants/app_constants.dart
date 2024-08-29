@@ -51,6 +51,11 @@ class ConfigConstants {
           menuItemList: [
             MenuItemInfo(
                 iconPath: AppAssets.menuPray.path,
+                title: "Início",
+                routePath: "/",
+                isEnabled: true),
+            MenuItemInfo(
+                iconPath: AppAssets.menuPray.path,
                 title: "Oração",
                 routePath: "/pray",
                 isEnabled: true),

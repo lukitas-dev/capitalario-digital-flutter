@@ -5,6 +5,7 @@ import 'package:app/core/ui/button_box.dart';
 import 'package:app/core/ui/header.dart';
 import 'package:app/home/models/home_info.dart';
 import 'package:app/home/stores/home_store.dart';
+import 'package:app/home/views/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -51,17 +52,25 @@ class HomeController {
     return Container();
   }
 
-  List<Widget> buildButtonList() {
+  List<Widget> buildButtonList(OnSwitchItemMenu? onSwitchItemMenu) {
     if (info.buttonList.isNotEmpty) {
       List<Widget> widgetList = [];
       for (final buttonInfo in info.buttonList) {
         widgetList.add(ButtonBox(
-          onTap: () => Modular.to.navigate(buttonInfo.routePath),
+          onTap: () {
+            if (onSwitchItemMenu == null) {
+              Modular.to.navigate(buttonInfo.routePath);
+            } else {
+              onSwitchItemMenu(buttonInfo.menuIndex);
+            }
+          },
           options: WidgetOptions(
-              borderColor: AppCore.infra.colors.fromHex(info.buttonStyle.borderColor),
-              backgroundColor:
-                  AppCore.infra.colors.fromHex(info.buttonStyle.backgroundColor),
-              textColor: AppCore.infra.colors.fromHex(info.buttonStyle.textColor),
+              borderColor:
+                  AppCore.infra.colors.fromHex(info.buttonStyle.borderColor),
+              backgroundColor: AppCore.infra.colors
+                  .fromHex(info.buttonStyle.backgroundColor),
+              textColor:
+                  AppCore.infra.colors.fromHex(info.buttonStyle.textColor),
               height: info.buttonStyle.height,
               borderRadius: info.buttonStyle.borderRadius,
               textFontSize: info.buttonStyle.textFontSize),

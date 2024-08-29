@@ -1,11 +1,18 @@
+import 'package:flutter/material.dart';
+
 import 'package:app/core/core.dart';
 import 'package:app/core/infrastructure/app_screen.dart';
 import 'package:app/core/layout/app_layout.dart';
 import 'package:app/home/controller/home_controller.dart';
-import 'package:flutter/material.dart';
+
+typedef OnSwitchItemMenu = Function(int index);
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  OnSwitchItemMenu? onSwitchItemMenu;
+  HomePage({
+    Key? key,
+    this.onSwitchItemMenu,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -34,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     widgetList.add(_controller.buildTitle());
     widgetList.add(_dimens.spaceHeigh8);
     widgetList.add(_controller.buildSubtitle());
-    widgetList.addAll(_controller.buildButtonList());
+    widgetList.addAll(_controller.buildButtonList(widget.onSwitchItemMenu));
 
     return Column(
         crossAxisAlignment: CrossAxisAlignment.center, children: widgetList);

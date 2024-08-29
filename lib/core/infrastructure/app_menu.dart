@@ -8,13 +8,15 @@ class AppMenu {
     for (var item in itemList) {
       if (item.isEnabled) {
         list.add(MenuItem(
-            icon: Image.asset(
-              item.iconPath,
-              width: 24,
-              height: 24,
-              color: Colors.white,
-              fit: BoxFit.fill,
-            ),
+            icon: Padding(
+                padding: const EdgeInsets.all(5),
+                child: Image.asset(
+                  item.iconPath,
+                  width: 24,
+                  height: 24,
+                  color: Colors.white,
+                  fit: BoxFit.fill,
+                )),
             title: item.title,
             routePath: item.routePath));
       }
