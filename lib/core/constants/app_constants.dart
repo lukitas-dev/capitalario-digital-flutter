@@ -1,7 +1,9 @@
+import 'package:app/core/config/models/bottom_navbar_info.dart';
 import 'package:app/core/config/models/menu_item_info.dart';
 import 'package:app/core/config/models/navbar_info.dart';
 import 'package:app/core/config/models/settings_info.dart';
 import 'package:app/core/config/models/sidemenu_info.dart';
+import 'package:app/core/infrastructure/app_assets.dart';
 
 class AppConstants {
   ConfigConstants get config => ConfigConstants();
@@ -22,6 +24,7 @@ class ConfigConstants {
   String get settingsDefaults => SettingsInfo(
           name: "Capitalario Digital",
           backgroundColor: "#FFFFFF",
+          isToolbarEnabled: true,
           toolbarBackgroundColor: "#1F2549",
           isSideMenuEnabled: true,
           sideMenuInfo: SideMenuInfo(
@@ -39,12 +42,28 @@ class ConfigConstants {
               textColor: "#000000",
               onHoverColor: "#F6A44D",
               indicationColor: "#F6A44D"),
+          isBottomNavbarEnabled: true,
+          bottomNavbarInfo: BottomNavbarInfo(
+              homeTitle: "Início",
+              backgroundColor: "#1F2549",
+              selectedItemColor: "#F6A44D",
+              unselectedItemColor: "#FFFFFF"),
           menuItemList: [
-            MenuItemInfo(title: "Oração", routePath: "/pray", isEnabled: true),
             MenuItemInfo(
-                title: "Entrega", routePath: "/given", isEnabled: true),
+                iconPath: AppAssets.menuPray.path,
+                title: "Oração",
+                routePath: "/pray",
+                isEnabled: true),
             MenuItemInfo(
-                title: "Visualizar", routePath: "/viewer", isEnabled: true),
+                iconPath: AppAssets.menuGiven.path,
+                title: "Entrega",
+                routePath: "/given",
+                isEnabled: true),
+            MenuItemInfo(
+                iconPath: AppAssets.menuViewer.path,
+                title: "Visualizar",
+                routePath: "/viewer",
+                isEnabled: true),
           ]).toJson();
 }
 

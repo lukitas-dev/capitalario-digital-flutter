@@ -62,6 +62,7 @@ class AppLayout extends StatelessWidget {
         ),
         mobileLayout: MobileLayout(
           backgroundColor: colors.fromHex(_settings.backgroundColor),
+          hasAppBar: _settings.isToolbarEnabled,
           appBar: Toolbar(
             hasBack: hasBack,
             onBackCallback: onBackCallback,
@@ -74,20 +75,25 @@ class AppLayout extends StatelessWidget {
             onBackColor: colors.browLight,
             backgroundColor: colors.fromHex(_settings.toolbarBackgroundColor),
           ),
-          drawer: _settings.isSideMenuEnabled ? SideMenu(
-            header: _settings.sideMenuInfo.showLogo ? SizedBox(
-                width: screenSize.width,
-                height: 150,
-                child: Center(
-                  child: Image.asset(
-                    AppAssets.logo.path,
-                    width: 180,
-                  ),
-                )) : Container(),
-            menuItens: menuItens,
-            backgroundColor: colors.fromHex(_settings.sideMenuInfo.backgroundColor),
-            homeTitle: _settings.sideMenuInfo.homeTitle,
-          ) : Container(),
+          drawer: _settings.isSideMenuEnabled
+              ? SideMenu(
+                  header: _settings.sideMenuInfo.showLogo
+                      ? SizedBox(
+                          width: screenSize.width,
+                          height: 150,
+                          child: Center(
+                            child: Image.asset(
+                              AppAssets.logo.path,
+                              width: 180,
+                            ),
+                          ))
+                      : Container(),
+                  menuItens: menuItens,
+                  backgroundColor:
+                      colors.fromHex(_settings.sideMenuInfo.backgroundColor),
+                  homeTitle: _settings.sideMenuInfo.homeTitle,
+                )
+              : Container(),
           header: header ?? Container(),
           body: body,
           bodyPadding: mobileBodyPadding,
