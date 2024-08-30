@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:app/core/models/menu_item.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NavBar extends StatefulWidget {
   final String title;
@@ -65,7 +66,7 @@ class _NavBarWidgetState extends State<NavBar> {
                         onTap: widget.onTitleClick,
                         child: Text(
                           widget.title,
-                          style: TextStyle(
+                          style: GoogleFonts.rosario(
                               color: isHovering
                                   ? widget.titleOnHoverColor ?? Colors.amber
                                   : widget.titleColor ?? Colors.black,
@@ -104,7 +105,7 @@ class _NavBarWidgetState extends State<NavBar> {
           children: [
             Text(
               item.title,
-              style: TextStyle(
+              style: GoogleFonts.rosario(
                 fontSize: widget.textSize,
                 color: item.isHovering
                     ? widget.onHoverColor ?? Colors.amber

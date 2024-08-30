@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:app/core/infrastructure/app_routes.dart';
 import 'package:app/core/models/menu_item.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SideMenu extends StatelessWidget {
   final Color? backgroundColor;
@@ -40,7 +41,7 @@ class SideMenu extends StatelessWidget {
     list.add(Padding(padding: const EdgeInsets.only(left: 16, top: 8), child: ListTile(
       title: Text(
         homeTitle ?? "Home",
-        style: TextStyle(
+        style: GoogleFonts.rosario(
             color: textColor ?? Colors.amber,
             fontSize: 24,
             fontWeight: FontWeight.bold),
@@ -51,7 +52,7 @@ class SideMenu extends StatelessWidget {
       list.add(Padding(padding: const EdgeInsets.only(left: 16, top: 8), child:  ListTile(
         title: Text(
           item.title,
-          style: TextStyle(
+          style: GoogleFonts.rosario(
               color: textColor ?? Colors.amber,
               fontSize: 24,
               fontWeight: FontWeight.bold),

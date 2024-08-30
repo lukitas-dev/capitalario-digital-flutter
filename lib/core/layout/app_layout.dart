@@ -11,6 +11,7 @@ import 'package:app/core/ui/footer.dart';
 import 'package:app/core/ui/navbar.dart';
 import 'package:app/core/ui/sidemenu.dart';
 import 'package:app/core/ui/toolbar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppLayout extends StatelessWidget {
   final String? pageTitle;
@@ -74,7 +75,7 @@ class AppLayout extends StatelessWidget {
             hasBack: hasBack,
             onBackCallback: onBackCallback,
             title: pageTitle != null ? pageTitle! : _settings.name,
-            titleStyle: TextStyle(
+            titleStyle: GoogleFonts.rosario(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: colors.fromHex(_settings.toolbarTextColor)),

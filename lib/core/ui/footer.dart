@@ -1,6 +1,7 @@
 import 'package:app/core/core.dart';
 import 'package:app/core/utils/app_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Footer extends StatelessWidget {
   final bool isMobile;
@@ -31,7 +32,7 @@ class Footer extends StatelessWidget {
               onPressed: () => AppUtils.openUrl("https://www.instagram.com/jufembrasil"),
               child:Text(
                 "@jufembrasil",
-                style: TextStyle(
+                style: GoogleFonts.rosario(
                     color: textColor ?? Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 24),
@@ -45,7 +46,7 @@ class Footer extends StatelessWidget {
                 child: Text(
               'Desenvolvido por Lucas Cruz',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.rosario(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: textColor ?? Colors.white),

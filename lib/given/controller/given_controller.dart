@@ -14,6 +14,7 @@ import 'package:app/given/models/given_info.dart';
 import 'package:app/given/stores/given_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GivenController {
   final _colors = AppCore.infra.colors;
@@ -56,17 +57,17 @@ class GivenController {
         selectionListBackgroundColor:
             _colors.fromHex(styleInfo.selectionBackgroundColor),
         hint: field.hint,
-        hintTextStyle: TextStyle(
+        hintTextStyle: GoogleFonts.rosario(
             color: _colors.fromHex(styleInfo.textColor),
             fontSize: styleInfo.textSize,
             fontWeight: FontWeight.bold),
         itemList: field.optionsList,
         onSelect: onSelect,
-        selectedTextStyle: TextStyle(
+        selectedTextStyle: GoogleFonts.rosario(
             color: _colors.fromHex(styleInfo.textColor),
             fontSize: styleInfo.textSize,
             fontWeight: FontWeight.bold),
-        itemTextStyle: TextStyle(
+        itemTextStyle: GoogleFonts.rosario(
             color: _colors.fromHex(styleInfo.selectionTextColor),
             fontSize: styleInfo.selectionTextSize,
             fontWeight: FontWeight.bold));
@@ -75,7 +76,10 @@ class GivenController {
         children: [
           Text(
             field.label,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: GoogleFonts.rosario(
+            color: _colors.fromHex(styleInfo.textColor),
+            fontSize: styleInfo.textSize,
+            fontWeight: FontWeight.bold),
           ),
           _dimens.spaceHeigh8,
           SizedBox(width: screenSize.width * 0.8, child: dropdownField),

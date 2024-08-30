@@ -5,6 +5,7 @@ import 'package:app/ranking/models/ranking_info.dart';
 import 'package:app/ranking/models/ranking_item_info.dart';
 import 'package:app/ranking/stores/ranking_store.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RankingController {
   RankingStore store = RankingStore();
@@ -44,21 +45,21 @@ class RankingController {
       widgetList.add(ListTile(
         leading: Text(
           "#${i + 1}",
-          style: TextStyle(
+          style: GoogleFonts.rosario(
               color: _colors.fromHex(info.textColor),
               fontSize: 24,
               fontWeight: FontWeight.bold),
         ),
         title: Text(
           item.label,
-          style: TextStyle(
+          style: GoogleFonts.rosario(
               color: _colors.fromHex(info.textColor),
               fontSize: 24,
               fontWeight: FontWeight.bold),
         ),
         trailing: Text(
           item.quantity.toString(),
-          style: TextStyle(
+          style: GoogleFonts.rosario(
               color: _colors.fromHex(info.textColor),
               fontSize: 24,
               fontWeight: FontWeight.bold),

@@ -3,6 +3,7 @@ import 'package:app/core/ui/header.dart';
 import 'package:app/pray/models/pray_info.dart';
 import 'package:app/pray/stores/pray_store.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PrayController {
   PrayStore store = PrayStore();
@@ -20,7 +21,7 @@ class PrayController {
           backgroundImage: AssetImage(info.headerImagePath),
           backgroundGradientColor: Colors.black,
           title: info.title,
-          titleTextStyle: const TextStyle(fontWeight: FontWeight.bold));
+          titleTextStyle: GoogleFonts.rosario(fontWeight: FontWeight.bold));
     }
     return Container();
   }
@@ -30,7 +31,7 @@ class PrayController {
       return Text(
         info.title,
         textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        style: GoogleFonts.rosario(fontSize: 24, fontWeight: FontWeight.bold),
       );
     }
     return Container();
@@ -41,7 +42,7 @@ class PrayController {
       return Text(
         info.text,
         textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 20),
+        style: GoogleFonts.rosario(fontSize: 20),
       );
     }
     return Container();

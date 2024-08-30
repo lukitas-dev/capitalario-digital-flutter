@@ -2,6 +2,7 @@ import 'package:app/core/core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app/core/models/quantity_field_info.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 typedef QuantitySelectorCallback = void Function(int number);
 
@@ -63,7 +64,7 @@ class QuantitySelector extends StatelessWidget {
           width: 120.0,
           child: TextField(
             controller: quantity,
-            style: TextStyle(
+            style: GoogleFonts.rosario(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: inputColor ?? Colors.black,
@@ -78,7 +79,7 @@ class QuantitySelector extends StatelessWidget {
                   borderSide:
                       BorderSide(color: inputBackgroundColor ?? Colors.white)),
               hintText: info.hint,
-              hintStyle: TextStyle(
+              hintStyle: GoogleFonts.rosario(
                 color: inputColor ?? Colors.black,
                 fontSize: 20,
               ),
@@ -111,7 +112,7 @@ class QuantitySelector extends StatelessWidget {
         child: Text(
           quantityOption.description,
           style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              GoogleFonts.rosario(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ));
       options.add(_dimens.spaceWidth16);

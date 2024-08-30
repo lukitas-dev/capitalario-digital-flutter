@@ -10,6 +10,7 @@ import 'package:app/home/models/home_info.dart';
 import 'package:app/home/stores/home_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeController {
   HomeStore store = HomeStore();
@@ -28,7 +29,7 @@ class HomeController {
           backgroundImage: AssetImage(info.headerImagePath),
           backgroundGradientColor: Colors.black,
           title: info.title,
-          titleTextStyle: const TextStyle(fontWeight: FontWeight.bold));
+          titleTextStyle: GoogleFonts.rosario(fontWeight: FontWeight.bold));
     }
     return Container();
   }
@@ -38,7 +39,7 @@ class HomeController {
       return Text(
         info.title,
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: GoogleFonts.rosario(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: _colors.fromHex(info.textColor)),
@@ -52,7 +53,7 @@ class HomeController {
       return Text(
         info.subtitle,
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 20, color: _colors.fromHex(info.textColor)),
+        style: GoogleFonts.rosario(fontSize: 20, color: _colors.fromHex(info.textColor)),
       );
     }
     return Container();

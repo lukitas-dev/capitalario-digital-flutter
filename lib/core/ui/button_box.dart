@@ -1,5 +1,6 @@
 import 'package:app/core/models/widget_options.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ButtonBox extends StatelessWidget {
   final VoidCallback onTap;
@@ -42,7 +43,7 @@ class ButtonBox extends StatelessWidget {
       color: options.backgroundColor,
       child: Text(text,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: GoogleFonts.rosario(
               fontSize: options.textFontSize,
               color: options.textColor)),
     );
