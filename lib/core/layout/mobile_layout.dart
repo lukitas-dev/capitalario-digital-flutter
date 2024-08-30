@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class MobileLayout extends StatelessWidget {
   final Color backgroundColor;
+  final bool hasAppBar;
   final Widget appBar;
   final double appBarHeight;
   final Widget drawer;
@@ -13,6 +14,7 @@ class MobileLayout extends StatelessWidget {
   const MobileLayout({
     Key? key,
     required this.backgroundColor,
+    required this.hasAppBar,
     required this.appBar,
     this.appBarHeight = 55,
     required this.drawer,
@@ -27,10 +29,15 @@ class MobileLayout extends StatelessWidget {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: backgroundColor,
-        appBar: PreferredSize(
-          preferredSize: Size(screenSize.width, appBarHeight),
-          child: appBar,
-        ),
+        appBar: hasAppBar
+            ? PreferredSize(
+                preferredSize: Size(screenSize.width, appBarHeight),
+                child: appBar,
+              )
+            : PreferredSize(
+                preferredSize: const Size(0.0, 0.0),
+                child: Container(),
+              ),
         drawer: drawer,
         body: ListView(
           children: [

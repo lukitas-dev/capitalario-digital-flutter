@@ -14,6 +14,7 @@ abstract class _ViewerStoreBase with Store {
   AppState state = AppState.loading;
 
   setup(ViewerSetupCallback callback) async {
+    await Future.delayed(const Duration(seconds: 3));
     var json = AppCore.config.getString(AppCore.constants.config.viewerInfo);
     var info = ViewerInfo.fromJson(json);
 

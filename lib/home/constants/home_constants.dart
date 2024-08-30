@@ -8,7 +8,9 @@ class HomeConstants {
           title: "Coloque seu titulo aqui",
           subtitle: "subtitulo aqui",
           textColor: "#000000",
-          buttonList: [ButtonInfo(title: "Botao A", routePath: "/test")],
+          buttonList: [
+            ButtonInfo(menuIndex: 1, title: "Botao A", routePath: "/test")
+          ],
           buttonStyle: ButtonStyleInfo(
               textColor: "#FFFFFF",
               borderColor: "#3e2b16",
