@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class MobileLayout extends StatelessWidget {
   final Color backgroundColor;
+  final String? backgroundImage;
   final bool hasAppBar;
   final Widget appBar;
   final double appBarHeight;
@@ -14,6 +15,7 @@ class MobileLayout extends StatelessWidget {
   const MobileLayout({
     Key? key,
     required this.backgroundColor,
+    this.backgroundImage,
     required this.hasAppBar,
     required this.appBar,
     this.appBarHeight = 55,
@@ -39,16 +41,22 @@ class MobileLayout extends StatelessWidget {
                 child: Container(),
               ),
         drawer: drawer,
-        body: ListView(
-          children: [
-            header,
-            Container(
-              padding: bodyPadding,
-              constraints: const BoxConstraints(minHeight: 400),
-              child: body,
-            ),
-            footer
-          ],
-        ));
+        body: Container(
+            decoration: backgroundImage != null ? BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(backgroundImage!),
+                  fit: BoxFit.cover),
+            ) : null,
+            child: ListView(
+              children: [
+                header,
+                Container(
+                  padding: bodyPadding,
+                  constraints: const BoxConstraints(minHeight: 400),
+                  child: body,
+                ),
+                footer
+              ],
+            )));
   }
 }

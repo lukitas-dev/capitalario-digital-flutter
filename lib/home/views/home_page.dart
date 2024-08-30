@@ -31,12 +31,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     AppCore.analytics.trackScreen(AppScreen.home);
-    return AppLayout(body: _buildBody(context));
+    return AppLayout(
+        mobileBackgroundImage: _controller.getBackgroundImage().isNotEmpty
+            ? _controller.getBackgroundImage()
+            : null,
+        body: _buildBody(context));
   }
 
   Widget _buildBody(BuildContext context) {
     List<Widget> widgetList = [];
-    widgetList.add(_controller.buildHeader());
     widgetList.add(_dimens.spaceHeigh24);
     widgetList.add(_controller.buildTitle());
     widgetList.add(_dimens.spaceHeigh8);
