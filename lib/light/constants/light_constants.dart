@@ -13,6 +13,7 @@ class LightConstants {
                 title: "Capíitulo III", routePath: "https://drive.google.com/file/d/1msQCKIVP9to8TgRq90lc3AGqvEkFrC1G/view?usp=sharing"),
             ButtonInfo(title: "Capíitulo IV", routePath: "https://drive.google.com/file/d/1Y4b_mupetUJQWT3snwNo6RANpfq85jRZ/view?usp=sharing"),
             ButtonInfo(title: "Capíitulo V", routePath: "https://drive.google.com/file/d/1YiSrEEz5ja2MAerF5S6WOxIH2-CvXp0K/view?usp=sharing"),
+            ButtonInfo(title: "Capíitulo VI", routePath: "https://drive.google.com/file/d/13USF8aSCOh_Ius5uIhQHesH5VTRjq0PY/view?usp=sharing"),
           ],
           buttonStyle: ButtonStyleInfo(
               textColor: "#FFFFFF",
