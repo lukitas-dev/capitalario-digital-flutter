@@ -6,7 +6,7 @@ class ViewerConstants {
   static String get infoDefaults => ViewerInfo(
       toolbarTitle: "Capitalário",
       gridInfo:
-          GridInfo(numberOfRows: 5, numberOfColumns: 3, targetDefault: 50),
+          GridInfo(numberOfRows: 5, numberOfColumns: 3, targetDefault: 1200),
       boxList: [
         BoxInfo(target: 0, imagePath: "row-1-column-1.webp"),
         BoxInfo(target: 0, imagePath: "row-1-column-2.webp"),
