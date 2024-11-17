@@ -6,7 +6,7 @@ enum AppRoutes {
   pray(path: "/pray"),
   given(path: "/given"),
   viewer(path: "/viewer"),
-  ranking(path: "/ranking");
+  ranking(path: "/secretRankingENJ2024");
 
   const AppRoutes({required this.path});
 

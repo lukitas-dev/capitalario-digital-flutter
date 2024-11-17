@@ -39,6 +39,7 @@ class RankingController {
       }
     });
     itemList = itemList.reversed.toList();
+    var total = 0;
     List<Widget> widgetList = [];
     for (var i = 0; i < itemList.length; i++) {
       var item = itemList[i];
@@ -71,7 +72,33 @@ class RankingController {
         color: _colors.greyLight,
         height: 2,
       ));
+      total += item.quantity;
     }
+    widgetList.add(ListTile(
+      leading: Text(
+        "#",
+        style: GoogleFonts.rosario(
+            color: _colors.fromHex(info.textColor),
+            fontSize: 32,
+            fontWeight: FontWeight.bold),
+      ),
+      title: Text(
+        "Total",
+        style: GoogleFonts.rosario(
+            color: _colors.fromHex(info.textColor),
+            fontSize: 32,
+            fontWeight: FontWeight.bold),
+      ),
+      trailing: Text(
+        total.toString(),
+        style: GoogleFonts.rosario(
+            color: _colors.fromHex(info.textColor),
+            fontSize: 32,
+            fontWeight: FontWeight.bold),
+      ),
+      contentPadding:
+          const EdgeInsets.only(left: 24, top: 8, bottom: 8, right: 24),
+    ));
     return widgetList;
   }
 }

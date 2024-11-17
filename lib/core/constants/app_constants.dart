@@ -51,8 +51,6 @@ class ConfigConstants {
                 title: "Entrega", routePath: "/given", isEnabled: true),
             MenuItemInfo(
                 title: "Capitalário", routePath: "/viewer", isEnabled: true),
-            MenuItemInfo(
-                title: "Ranking", routePath: "/ranking", isEnabled: true),
           ]).toJson();
 }
 

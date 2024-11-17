@@ -15,7 +15,6 @@ class HomeConstants {
             ButtonInfo(title: "Visualizar Desafios", routePath: "/challenges"),
             ButtonInfo(title: "Entrega do Capital de Graça", routePath: "/given"),
             ButtonInfo(title: "Visualizar Capitalário", routePath: "/viewer"),
-            ButtonInfo(title: "Visualizar Ranking", routePath: "/ranking"),
           ],
           buttonStyle: ButtonStyleInfo(
               textColor: "#FFFFFF",
